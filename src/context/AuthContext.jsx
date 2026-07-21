@@ -8,7 +8,6 @@ const STORAGE_KEY = 'globaltech_user';
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  // Load user from localStorage on mount
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
@@ -16,7 +15,6 @@ export function AuthProvider({ children }) {
         setUser(JSON.parse(stored));
       }
     } catch (e) {
-      // ignore parse errors
     }
   }, []);
 

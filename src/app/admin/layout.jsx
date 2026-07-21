@@ -39,7 +39,6 @@ export default function AdminLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Close mobile sidebar on route change
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   const isActive = (href) =>
@@ -53,7 +52,7 @@ export default function AdminLayout({ children }) {
         transition-all duration-200
       `}
     >
-      {/* Logo */}
+      
       <div className="flex items-center gap-3 px-4 py-5 border-b border-gray-800 flex-shrink-0">
         <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
           style={{ background: 'linear-gradient(135deg,#e8517a,#f4874b)' }}>
@@ -80,7 +79,7 @@ export default function AdminLayout({ children }) {
         )}
       </div>
 
-      {/* Nav */}
+      
       <nav className="flex-1 overflow-y-auto py-4 px-2 space-y-6">
         {NAV.map((group) => (
           <div key={group.group}>
@@ -119,7 +118,7 @@ export default function AdminLayout({ children }) {
         ))}
       </nav>
 
-      {/* Bottom */}
+      
       <div className="border-t border-gray-800 p-3 flex-shrink-0">
         <Link
           href="/"
@@ -134,12 +133,12 @@ export default function AdminLayout({ children }) {
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden" style={{ fontFamily: 'var(--font-outfit,sans-serif)' }}>
-      {/* Desktop sidebar */}
+      
       <div className="hidden md:flex flex-shrink-0">
         <Sidebar />
       </div>
 
-      {/* Mobile overlay sidebar */}
+      
       {mobileOpen && (
         <div className="fixed inset-0 z-50 flex md:hidden">
           <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
@@ -149,9 +148,9 @@ export default function AdminLayout({ children }) {
         </div>
       )}
 
-      {/* Main content */}
+      
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Top bar */}
+        
         <header className="bg-white border-b border-gray-200 px-4 md:px-6 h-14 flex items-center gap-4 flex-shrink-0">
           <button
             className="md:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100"
@@ -162,7 +161,7 @@ export default function AdminLayout({ children }) {
             </svg>
           </button>
 
-          {/* Breadcrumb */}
+          
           <div className="text-sm text-gray-500 hidden sm:block">
             {pathname.split('/').filter(Boolean).map((seg, i, arr) => (
               <span key={seg}>
@@ -185,7 +184,7 @@ export default function AdminLayout({ children }) {
           </div>
         </header>
 
-        {/* Page content */}
+        
         <main className="flex-1 overflow-y-auto">
           {children}
         </main>

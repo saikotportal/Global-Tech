@@ -19,7 +19,7 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Form */}
+          
           <div className="bg-white rounded-2xl shadow-sm p-8">
             {sent ? (
               <div className="text-center py-10">
@@ -55,7 +55,7 @@ export default function ContactPage() {
             )}
           </div>
 
-          {/* Info */}
+          
           <div className="space-y-6">
             {[
               { icon: '📧', label: 'Email',          value: 'support@globaltech.com',    sub: 'Typically replies within 2 hours' },
@@ -73,7 +73,7 @@ export default function ContactPage() {
               </div>
             ))}
 
-            {/* Map placeholder */}
+            
             <div className="bg-gray-200 rounded-2xl h-52 flex items-center justify-center text-gray-400">
               <div className="text-center">
                 <div className="text-4xl mb-2">🗺️</div>

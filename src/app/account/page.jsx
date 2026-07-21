@@ -63,7 +63,6 @@ const STATUS_STYLES = {
   Processing: 'bg-yellow-100 text-yellow-700',
 };
 
-// Brand gradient style helper
 const BRAND_BTN = { background: 'linear-gradient(135deg, #e8517a, #f4874b)' };
 
 function LoginModal({ isOpen, onClose, onLogin }) {
@@ -72,7 +71,6 @@ function LoginModal({ isOpen, onClose, onLogin }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Reset form when modal opens/mode changes
   useEffect(() => {
     if (isOpen) {
       setForm({ name: '', email: '', password: '' });
@@ -84,13 +82,11 @@ function LoginModal({ isOpen, onClose, onLogin }) {
     e.preventDefault();
     setError('');
 
-    // Basic validation
     if (!form.email.trim()) { setError('Email is required.'); return; }
     if (!form.password.trim()) { setError('Password is required.'); return; }
     if (mode === 'register' && !form.name.trim()) { setError('Full name is required.'); return; }
 
     setLoading(true);
-    // Simulate async auth (300ms)
     await new Promise(r => setTimeout(r, 300));
 
     const userData = {
@@ -181,7 +177,6 @@ function LoginModal({ isOpen, onClose, onLogin }) {
   );
 }
 
-// Inner component that reads search params
 function AccountPageInner() {
   const searchParams = useSearchParams();
   const { user, login, logout } = useAuthContext();
@@ -189,7 +184,6 @@ function AccountPageInner() {
   const [tab, setTab] = useState('dashboard');
   const [showLogin, setShowLogin] = useState(false);
 
-  // Auto-open login modal if not logged in OR if ?login=true in URL
   useEffect(() => {
     if (!user || searchParams.get('login') === 'true') {
       setShowLogin(true);
@@ -198,7 +192,6 @@ function AccountPageInner() {
     }
   }, [user, searchParams]);
 
-  // Switch to specific tab from URL ?tab=xxx
   useEffect(() => {
     const urlTab = searchParams.get('tab');
     if (urlTab) setTab(urlTab);
@@ -246,7 +239,6 @@ function AccountPageInner() {
     );
   }
 
-  // Show login modal even if logged in when ?login=true (e.g. re-auth)
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <LoginModal
@@ -270,9 +262,9 @@ function AccountPageInner() {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Sidebar */}
+          
           <div className="w-full lg:w-56 bg-white rounded-2xl shadow-sm p-3 h-fit">
-            {/* User avatar in sidebar */}
+            
             <div className="flex items-center gap-3 px-3 py-3 mb-3 border-b border-gray-100">
               <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
                 style={BRAND_BTN}>
@@ -305,7 +297,7 @@ function AccountPageInner() {
             ))}
           </div>
 
-          {/* Tab content */}
+          
           <div className="flex-1 bg-white rounded-2xl shadow-sm p-6">
 
             {tab === 'dashboard' && (
@@ -326,7 +318,7 @@ function AccountPageInner() {
                   </div>
                 </div>
 
-                {/* Loyalty Badge */}
+                
                 <div className="rounded-2xl p-5 mb-6 flex items-center justify-between gap-4" style={{ background: 'linear-gradient(135deg, #7c3aed, #ec4899)' }}>
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-2xl flex-shrink-0">
@@ -483,7 +475,6 @@ function AccountPageInner() {
   );
 }
 
-// Wrap in Suspense for useSearchParams
 export default function AccountPage() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin w-8 h-8 rounded-full border-4 border-orange-400 border-t-transparent"/></div>}>

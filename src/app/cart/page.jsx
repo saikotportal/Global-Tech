@@ -41,7 +41,7 @@ export default function CartPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Items */}
+        
         <div className="lg:col-span-2 space-y-4">
           {items.map(item => (
             <div key={item.id} className="card p-4 sm:p-5 flex gap-4">
@@ -91,12 +91,12 @@ export default function CartPage() {
           </Link>
         </div>
 
-        {/* Summary */}
+        
         <div className="lg:col-span-1">
           <div className="card p-6 sticky top-24">
             <h2 className="font-display font-bold text-xl text-dark-800 mb-5">Order Summary</h2>
 
-            {/* Coupon */}
+            
             <div className="flex gap-2 mb-5">
               <input type="text" placeholder="Coupon code" className="input-field py-2 text-sm flex-1" />
               <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium transition-colors">Apply</button>

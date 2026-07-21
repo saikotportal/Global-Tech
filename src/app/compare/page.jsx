@@ -63,7 +63,6 @@ function buildSpecs(product) {
   return keys.map((key, i) => ({ key, value: vals[i]?.[idx] ?? '—' }));
 }
 
-// ─── Slot picker modal content ────────────────────────────────────────────────
 function SlotPicker({ onSelect, exclude }) {
   const [search, setSearch] = useState('');
   const [cat,    setCat]    = useState('');
@@ -122,7 +121,6 @@ function SlotPicker({ onSelect, exclude }) {
   );
 }
 
-// ─── Product header card (image + info + add to cart) ────────────────────────
 function ProductCard({ product, onRemove }) {
   const { format } = useCurrency();
   const { addItem } = useCart();
@@ -175,7 +173,6 @@ function ProductCard({ product, onRemove }) {
   );
 }
 
-// ─── Empty slot button ────────────────────────────────────────────────────────
 function EmptySlot({ index, onClick }) {
   return (
     <button
@@ -189,17 +186,14 @@ function EmptySlot({ index, onClick }) {
   );
 }
 
-// ─── Main page ────────────────────────────────────────────────────────────────
 export default function ComparePage() {
   const [slots,   setSlots]   = useState([null, null, null]);
   const [picking, setPicking] = useState(null);
 
   const activeProducts = slots.filter(Boolean);
 
-  // Unified spec rows built from first active product's category
   const specRows = activeProducts.length > 0 ? buildSpecs(activeProducts[0]).map(s => s.key) : [];
 
-  // Per-product spec lookup map: productId → { key → value }
   const specsByProduct = useMemo(() => {
     const map = {};
     activeProducts.forEach((p) => {
@@ -225,13 +219,12 @@ export default function ComparePage() {
 
   const excludedIds = slots.filter(Boolean).map((p) => p.id);
 
-  // Grid template: label col + 3 product cols
   const gridCols = `140px repeat(${MAX_COMPARE}, 1fr)`;
 
   return (
     <div className="container-custom py-10 sm:py-14">
 
-      {/* Breadcrumb */}
+      
       <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8">
         <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>
         <span>/</span>
@@ -243,7 +236,7 @@ export default function ComparePage() {
         <p className="text-gray-500 text-sm mt-1">Add up to 3 products to compare side-by-side</p>
       </div>
 
-      {/* Picker modal */}
+      
       {picking !== null && (
         <div
           className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4"
@@ -262,13 +255,13 @@ export default function ComparePage() {
         </div>
       )}
 
-      {/* ── Compare table ── */}
+      
       <div className="overflow-x-auto -mx-4 px-4">
         <div className="min-w-[560px]">
 
-          {/* Row 1: label spacer + product cards */}
+          
           <div className="grid gap-3 mb-0" style={{ gridTemplateColumns: gridCols }}>
-            <div /> {/* empty label cell */}
+            <div /> 
             {slots.map((product, i) => (
               <div key={i}>
                 {product
@@ -279,7 +272,7 @@ export default function ComparePage() {
             ))}
           </div>
 
-          {/* Empty state */}
+          
           {activeProducts.length === 0 && (
             <div className="text-center py-16 mt-4">
               <div className="text-5xl mb-3">⚖️</div>
@@ -288,7 +281,7 @@ export default function ComparePage() {
             </div>
           )}
 
-          {/* Spec rows — label + all 3 values in the SAME grid row */}
+          
           {specRows.length > 0 && (
             <div className="mt-3 rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
               {specRows.map((key, ri) => (
@@ -297,12 +290,12 @@ export default function ComparePage() {
                   className={`grid gap-0 ${ri % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}
                   style={{ gridTemplateColumns: gridCols }}
                 >
-                  {/* Label */}
+                  
                   <div className="flex items-center px-4 py-3.5 border-r border-gray-100">
                     <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">{key}</span>
                   </div>
 
-                  {/* One cell per slot */}
+                  
                   {slots.map((product, si) => (
                     <div
                       key={si}

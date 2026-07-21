@@ -53,7 +53,7 @@ function OrderDetailModal({ order, onClose, onStatusChange }) {
         </div>
 
         <div className="flex-1 overflow-y-auto p-6 space-y-5">
-          {/* Status */}
+          
           <div className="flex items-center justify-between">
             <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold ${st.bg} ${st.text}`}>
               <span className={`w-2 h-2 rounded-full ${st.dot}`}/>
@@ -69,7 +69,7 @@ function OrderDetailModal({ order, onClose, onStatusChange }) {
             )}
           </div>
 
-          {/* Customer */}
+          
           <div className="bg-gray-50 rounded-xl p-4">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Customer</p>
             <p className="font-semibold text-gray-900">{order.customer}</p>
@@ -77,7 +77,7 @@ function OrderDetailModal({ order, onClose, onStatusChange }) {
             <p className="text-sm text-gray-500 mt-1">{order.address}</p>
           </div>
 
-          {/* Items */}
+          
           <div>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Items</p>
             <div className="space-y-2">
@@ -93,7 +93,7 @@ function OrderDetailModal({ order, onClose, onStatusChange }) {
             </div>
           </div>
 
-          {/* Payment & shipping */}
+          
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-gray-50 rounded-xl p-3">
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Payment</p>
@@ -105,13 +105,13 @@ function OrderDetailModal({ order, onClose, onStatusChange }) {
             </div>
           </div>
 
-          {/* Total */}
+          
           <div className="flex justify-between items-center py-3 border-t border-gray-200">
             {order.coupon && <p className="text-xs text-green-600 font-semibold">🎟️ Coupon: {order.coupon}</p>}
             <p className="text-lg font-bold text-gray-900 ml-auto">Total: ${order.total.toLocaleString()}</p>
           </div>
 
-          {/* Actions */}
+          
           <div className="flex gap-3">
             {order.status === 'processing' && (
               <button onClick={() => { onStatusChange(order.id, 'cancelled'); onClose(); }}
@@ -170,7 +170,7 @@ export default function AdminOrders() {
 
   return (
     <div className="p-4 md:p-6 space-y-5">
-      {/* Header */}
+      
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-gray-900">Orders</h1>
@@ -178,7 +178,7 @@ export default function AdminOrders() {
         </div>
       </div>
 
-      {/* Status tabs */}
+      
       <div className="flex gap-2 flex-wrap">
         {STATUSES.map(s => {
           const st = s === 'all' ? null : STATUS_STYLES[s];
@@ -204,13 +204,13 @@ export default function AdminOrders() {
         })}
       </div>
 
-      {/* Search */}
+      
       <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
         <input className={`${inp} w-full`} placeholder="🔍  Search by order ID, customer name or email..."
           value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} />
       </div>
 
-      {/* Table */}
+      
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -284,7 +284,7 @@ export default function AdminOrders() {
           </table>
         </div>
 
-        {/* Pagination */}
+        
         {pageCount > 1 && (
           <div className="flex items-center justify-between px-4 py-3 border-t border-gray-100">
             <p className="text-xs text-gray-500">{(page-1)*PER_PAGE+1}–{Math.min(page*PER_PAGE,filtered.length)} of {filtered.length}</p>
@@ -305,7 +305,7 @@ export default function AdminOrders() {
         )}
       </div>
 
-      {/* Order detail modal */}
+      
       {selected && (
         <OrderDetailModal
           order={selected}

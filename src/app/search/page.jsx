@@ -19,7 +19,6 @@ function SearchContent() {
     }
   }, [query]);
 
-  // Also trigger search from URL on mount
   useEffect(() => {
     if (q) setQuery(q);
   }, [q]);
@@ -29,7 +28,7 @@ function SearchContent() {
       <div className="max-w-6xl mx-auto px-4">
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Search Products</h1>
 
-        {/* Search bar */}
+        
         <div className="relative mb-8 max-w-2xl">
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl">🔍</span>
           <input
@@ -50,7 +49,7 @@ function SearchContent() {
           )}
         </div>
 
-        {/* Results */}
+        
         {query.trim() === '' ? (
           <div className="text-center py-20 text-gray-400">
             <div className="text-5xl mb-4">🔍</div>

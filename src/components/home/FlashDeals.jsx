@@ -103,7 +103,7 @@ export default function FlashDeals() {
             </div>
             <p className="text-gray-400 text-sm">Limited-time offers — grab them before they're gone</p>
           </div>
-          {/* Countdown with digit tick */}
+          
           <div className="flex items-center gap-1 text-white"
             style={{ transition: 'all 0.5s ease 0.2s', opacity: headerVisible ? 1 : 0, transform: headerVisible ? 'translateY(0)' : 'translateY(12px)' }}>
             <DigitBlock value={time.h} ticked={changed.h} />

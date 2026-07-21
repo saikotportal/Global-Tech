@@ -11,15 +11,15 @@ export default function CartSidebar() {
 
   return (
     <>
-      {/* Overlay */}
+      
       <div
         className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm"
         onClick={closeCart}
       />
 
-      {/* Drawer */}
+      
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white z-50 flex flex-col shadow-2xl animate-slide-in-right">
-        {/* Header */}
+        
         <div className="flex items-center justify-between p-5 border-b border-gray-100">
           <h2 className="font-display text-xl font-bold text-dark-800">
             Your Cart
@@ -35,7 +35,7 @@ export default function CartSidebar() {
           </button>
         </div>
 
-        {/* Items */}
+        
         <div className="flex-1 overflow-y-auto p-5 space-y-4">
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center py-16">
@@ -88,7 +88,7 @@ export default function CartSidebar() {
           )}
         </div>
 
-        {/* Footer */}
+        
         {items.length > 0 && (
           <div className="p-5 border-t border-gray-100 space-y-3">
             <div className="flex justify-between text-sm text-gray-500">

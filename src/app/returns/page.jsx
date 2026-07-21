@@ -19,13 +19,13 @@ export default function ReturnsPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-14">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Header */}
+        
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-3">Returns & Refunds</h1>
           <p className="text-gray-500 text-lg">Hassle-free returns within 30 days. No questions asked.</p>
         </div>
 
-        {/* CTA */}
+        
         <div className="bg-blue-600 text-white rounded-2xl p-8 text-center mb-14">
           <h2 className="text-2xl font-bold mb-2">Ready to start a return?</h2>
           <p className="text-blue-100 mb-5">Go to your account and select the item you'd like to return.</p>
@@ -34,7 +34,7 @@ export default function ReturnsPage() {
           </a>
         </div>
 
-        {/* Timeline */}
+        
         <h2 className="text-2xl font-bold text-gray-800 mb-8">Return Process Timeline</h2>
         <div className="relative mb-14">
           <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-blue-200 hidden md:block" />
@@ -57,7 +57,7 @@ export default function ReturnsPage() {
           </div>
         </div>
 
-        {/* Policy grid */}
+        
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Return Policy Details</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
           {policies.map(({ icon, title, desc }) => (
@@ -69,7 +69,7 @@ export default function ReturnsPage() {
           ))}
         </div>
 
-        {/* Help */}
+        
         <div className="bg-gray-100 rounded-2xl p-8 text-center">
           <h3 className="font-bold text-gray-800 mb-2">Need help with a return?</h3>
           <p className="text-gray-500 text-sm mb-5">Our support team is available 24/7 to assist you.</p>

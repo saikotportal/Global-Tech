@@ -1,10 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 
-/**
- * useScrollAnimation — triggers when the element enters the viewport.
- * Returns [ref, isVisible].
- */
 export function useScrollAnimation(options = {}) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -16,7 +12,7 @@ export function useScrollAnimation(options = {}) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(el); // fire once
+          observer.unobserve(el);
         }
       },
       { threshold: options.threshold ?? 0.15, rootMargin: options.rootMargin ?? '0px' }
@@ -28,9 +24,6 @@ export function useScrollAnimation(options = {}) {
   return [ref, isVisible];
 }
 
-/**
- * useCountUp — animates a number from 0 to `end` when triggered.
- */
 export function useCountUp(end, duration = 1800, trigger = true) {
   const [count, setCount] = useState(0);
   useEffect(() => {

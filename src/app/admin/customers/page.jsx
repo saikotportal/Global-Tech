@@ -57,7 +57,7 @@ function CustomerDetailModal({ customer, onClose, onToggleBlock }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] flex flex-col z-10">
-        {/* Header */}
+        
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
           <h2 className="font-bold text-gray-900 text-lg">Customer Details</h2>
           <button onClick={onClose} className="p-2 rounded-lg text-gray-400 hover:bg-gray-100 transition-colors">
@@ -68,7 +68,7 @@ function CustomerDetailModal({ customer, onClose, onToggleBlock }) {
         </div>
 
         <div className="flex-1 overflow-y-auto p-6 space-y-5">
-          {/* Profile */}
+          
           <div className="flex items-center gap-4">
             <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${AVATAR_COLORS[colorIdx]} flex items-center justify-center text-white font-bold text-xl flex-shrink-0`}>
               {customer.avatar}
@@ -83,7 +83,7 @@ function CustomerDetailModal({ customer, onClose, onToggleBlock }) {
             </span>
           </div>
 
-          {/* Stats */}
+          
           <div className="grid grid-cols-3 gap-3">
             {[
               { label: 'Total Orders', value: customer.orders },
@@ -97,7 +97,7 @@ function CustomerDetailModal({ customer, onClose, onToggleBlock }) {
             ))}
           </div>
 
-          {/* Info */}
+          
           <div className="bg-gray-50 rounded-xl p-4 space-y-2">
             {[
               { label: 'Location', value: customer.location },
@@ -112,7 +112,7 @@ function CustomerDetailModal({ customer, onClose, onToggleBlock }) {
             ))}
           </div>
 
-          {/* Order history */}
+          
           <div>
             <h4 className="font-semibold text-gray-900 mb-3">Order History</h4>
             {orders.length === 0 ? (
@@ -138,7 +138,7 @@ function CustomerDetailModal({ customer, onClose, onToggleBlock }) {
             )}
           </div>
 
-          {/* Actions */}
+          
           <div className="flex gap-3 pt-2">
             <button
               onClick={() => { onToggleBlock(customer.id); onClose(); }}
@@ -205,13 +205,13 @@ export default function CustomersPage() {
 
   return (
     <div className="p-4 md:p-6 space-y-6">
-      {/* Header */}
+      
       <div>
         <h1 className="text-xl font-bold text-gray-900">Customers</h1>
         <p className="text-sm text-gray-500 mt-0.5">Manage your customer accounts and history.</p>
       </div>
 
-      {/* KPI row */}
+      
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           { icon: '👥', label: 'Total Customers', value: customers.length,              color: 'bg-blue-50'   },
@@ -229,10 +229,10 @@ export default function CustomersPage() {
         ))}
       </div>
 
-      {/* Filters */}
+      
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="flex flex-wrap items-center gap-3 p-4 border-b border-gray-100">
-          {/* Search */}
+          
           <div className="relative flex-1 min-w-48">
             <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
@@ -245,7 +245,7 @@ export default function CustomersPage() {
             />
           </div>
 
-          {/* Status filter */}
+          
           <div className="flex gap-1.5">
             {['all','active','blocked'].map(f => (
               <button
@@ -263,7 +263,7 @@ export default function CustomersPage() {
             ))}
           </div>
 
-          {/* Sort */}
+          
           <select
             value={sort}
             onChange={e => setSort(e.target.value)}
@@ -278,7 +278,7 @@ export default function CustomersPage() {
           <p className="text-xs text-gray-400 ml-auto">{filtered.length} customer{filtered.length !== 1 ? 's' : ''}</p>
         </div>
 
-        {/* Table */}
+        
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -354,7 +354,7 @@ export default function CustomersPage() {
         </div>
       </div>
 
-      {/* Detail modal */}
+      
       {selected && (
         <CustomerDetailModal
           customer={selected}

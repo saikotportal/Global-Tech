@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useAuthContext } from '@/context/AuthContext';
 import { useToastContext } from '@/context/ToastContext';
 
-// ── Tier config ───────────────────────────────────────────────────────────────
 const TIERS = [
   {
     id: 'bronze',
@@ -49,7 +48,6 @@ const TIERS = [
   },
 ];
 
-// ── Rewards catalogue ─────────────────────────────────────────────────────────
 const REWARDS = [
   { id: 1, label: '$5 off your next order',    points: 500,   icon: '🏷️', category: 'discount' },
   { id: 2, label: '$15 off your next order',   points: 1200,  icon: '🏷️', category: 'discount' },
@@ -62,7 +60,6 @@ const REWARDS = [
   { id: 9, label: '$100 off on orders $500+',  points: 7500,  icon: '💰', category: 'discount' },
 ];
 
-// ── Mock activity history ─────────────────────────────────────────────────────
 const MOCK_HISTORY = [
   { id: 1, type: 'earn',   label: 'Purchase — iPhone 16 Pro Max',    points: +1199, date: 'May 20, 2026' },
   { id: 2, type: 'earn',   label: 'Purchase — Sony WH-1000XM6',      points: +349,  date: 'May 10, 2026' },
@@ -74,7 +71,7 @@ const MOCK_HISTORY = [
   { id: 8, type: 'earn',   label: 'Purchase — LG C4 OLED TV',        points: +1799, date: 'Feb 14, 2026' },
 ];
 
-const MOCK_POINTS = 4247; // current balance for demo
+const MOCK_POINTS = 4247;
 
 function getTier(points) {
   return TIERS.slice().reverse().find(t => points >= t.min) || TIERS[0];
@@ -141,7 +138,7 @@ export default function LoyaltyPage() {
   return (
     <div className="min-h-screen bg-gray-50">
 
-      {/* ── HERO ─────────────────────────────────────────────────────── */}
+      
       <section className={`relative bg-gradient-to-br ${currentTier.bg} overflow-hidden`}>
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-10 pointer-events-none"
           style={{ background: currentTier.color, filter: 'blur(80px)' }} />
@@ -175,7 +172,7 @@ export default function LoyaltyPage() {
               </p>
             </div>
 
-            {/* Points card */}
+            
             <div className="rounded-2xl p-6 min-w-[220px]"
               style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)' }}>
               <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-1">Available Points</p>
@@ -203,7 +200,7 @@ export default function LoyaltyPage() {
         </div>
       </section>
 
-      {/* ── TABS ─────────────────────────────────────────────────────── */}
+      
       <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm">
         <div className="container-custom">
           <div className="flex gap-1 overflow-x-auto py-1">
@@ -225,11 +222,11 @@ export default function LoyaltyPage() {
 
       <div className="container-custom py-10">
 
-        {/* ── OVERVIEW ─────────────────────────────────────────────── */}
+        
         {activeTab === 'overview' && (
           <div className="space-y-8">
 
-            {/* How to earn */}
+            
             <div>
               <h2 className="font-bold text-lg text-gray-900 mb-5">How to Earn Points</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -254,7 +251,7 @@ export default function LoyaltyPage() {
               </div>
             </div>
 
-            {/* Tier overview */}
+            
             <div>
               <h2 className="font-bold text-lg text-gray-900 mb-5">Membership Tiers</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -293,7 +290,7 @@ export default function LoyaltyPage() {
           </div>
         )}
 
-        {/* ── REWARDS / REDEEM ─────────────────────────────────────── */}
+        
         {activeTab === 'rewards' && (
           <div>
             <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
@@ -301,7 +298,7 @@ export default function LoyaltyPage() {
                 <h2 className="font-bold text-lg text-gray-900">Redeem Your Points</h2>
                 <p className="text-sm text-gray-500 mt-0.5">You have <span className="font-bold text-gray-900">{points.toLocaleString()}</span> points available</p>
               </div>
-              {/* Category filter */}
+              
               <div className="flex gap-2 flex-wrap">
                 {['all', 'discount', 'shipping', 'service', 'access'].map(cat => (
                   <button
@@ -340,7 +337,7 @@ export default function LoyaltyPage() {
                       )}
                     </div>
 
-                    {/* Progress mini bar */}
+                    
                     <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
                       <div className="h-full rounded-full transition-all"
                         style={{
@@ -369,7 +366,7 @@ export default function LoyaltyPage() {
           </div>
         )}
 
-        {/* ── HISTORY ─────────────────────────────────────────────── */}
+        
         {activeTab === 'history' && (
           <div>
             <h2 className="font-bold text-lg text-gray-900 mb-6">Points History</h2>
@@ -397,7 +394,7 @@ export default function LoyaltyPage() {
           </div>
         )}
 
-        {/* ── REFERRAL ─────────────────────────────────────────────── */}
+        
         {activeTab === 'referral' && (
           <div className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl shadow-card p-8 text-center mb-6">
@@ -407,7 +404,7 @@ export default function LoyaltyPage() {
                 Share your referral code. When a friend makes their first purchase, you both get <span className="font-bold text-orange-500">500 bonus points</span>.
               </p>
 
-              {/* Referral code box */}
+              
               <div className="flex items-center gap-3 bg-gray-50 border-2 border-dashed border-gray-200 rounded-2xl p-4 mb-4">
                 <span className="flex-1 font-mono font-black text-xl text-gray-900 tracking-widest">{referralCode}</span>
                 <button
@@ -430,7 +427,7 @@ export default function LoyaltyPage() {
               </div>
             </div>
 
-            {/* How it works */}
+            
             <div className="grid grid-cols-3 gap-4">
               {[
                 { step: '1', icon: '📤', label: 'Share your code' },

@@ -12,7 +12,6 @@ const SORT_OPTIONS = [
   { value: 'rating',   label: 'Top Rated' },
 ];
 
-// ── SVG icons for every category (matches CategoryGrid) ──────────────────────
 const CATEGORY_ICONS = {
   phones: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 flex-shrink-0">
@@ -95,7 +94,6 @@ const CATEGORY_ICONS = {
   ),
 };
 
-// ── Brand logo URLs from Clearbit (reliable CDN, no API key needed) ───────────
 const BRAND_LOGOS = {
   Apple:     'https://logo.clearbit.com/apple.com',
   Samsung:   'https://logo.clearbit.com/samsung.com',
@@ -186,7 +184,7 @@ export default function ProductsPage() {
   const Sidebar = () => (
     <aside className="w-full lg:w-56 flex-shrink-0 space-y-6">
 
-      {/* ── Category ── */}
+      
       <div>
         <h3 className="font-semibold text-dark-800 mb-3">Category</h3>
         <div className="space-y-0.5">
@@ -215,7 +213,7 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      {/* ── Brand ── */}
+      
       <div>
         <h3 className="font-semibold text-dark-800 mb-3">Brand</h3>
         <div className="space-y-0.5">
@@ -236,7 +234,7 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      {/* ── Price Range ── */}
+      
       <div>
         <h3 className="font-semibold text-dark-800 mb-3">Price Range</h3>
         <div className="flex items-center gap-2">

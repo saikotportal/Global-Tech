@@ -48,7 +48,7 @@ const SLIDES = [
 export default function HeroBanner() {
   const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const [key, setKey] = useState(0); // force re-animation on slide change
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
     const t = setInterval(() => go((active + 1) % SLIDES.length), 5000);
@@ -69,7 +69,7 @@ export default function HeroBanner() {
 
   return (
     <section className="relative overflow-hidden bg-dark-900" style={{ minHeight: 520 }}>
-      {/* Ken Burns background image */}
+      
       <div className="absolute inset-0 overflow-hidden">
         <div
           key={`bg-${active}`}
@@ -84,7 +84,7 @@ export default function HeroBanner() {
         />
       </div>
 
-      {/* Background glow */}
+      
       <div
         className="absolute inset-0 transition-all duration-700"
         style={{
@@ -92,14 +92,14 @@ export default function HeroBanner() {
         }}
       />
 
-      {/* Grid pattern */}
+      
       <div className="absolute inset-0 opacity-10" style={{
         backgroundImage: 'linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px)',
         backgroundSize: '40px 40px',
       }} />
 
       <div className="relative container-custom flex flex-col md:flex-row items-center gap-10 py-16 md:py-24">
-        {/* Text */}
+        
         <div
           className="flex-1 text-white"
           style={{ opacity: animating ? 0 : 1, transform: animating ? 'translateY(12px)' : 'translateY(0)', transition: 'all .3s ease' }}
@@ -127,7 +127,7 @@ export default function HeroBanner() {
               {slide.saving}
             </span>
           </div>
-          {/* Dots */}
+          
           <div key={`dots-${key}`} className="hero-dots flex gap-2 mt-10">
             {SLIDES.map((_, i) => (
               <button
@@ -140,7 +140,7 @@ export default function HeroBanner() {
           </div>
         </div>
 
-        {/* Product image */}
+        
         <div
           className="flex-shrink-0 flex items-center justify-center"
           style={{ opacity: animating ? 0 : 1, transform: animating ? 'scale(.9)' : 'scale(1)', transition: 'all .3s ease' }}
@@ -159,7 +159,7 @@ export default function HeroBanner() {
         </div>
       </div>
 
-      {/* Nav arrows */}
+      
       <button
         onClick={() => go((active - 1 + SLIDES.length) % SLIDES.length)}
         className="absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"

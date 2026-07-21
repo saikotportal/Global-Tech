@@ -4,7 +4,6 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useAuthContext } from '@/context/AuthContext';
 
-// ── Field validation helpers ──────────────────────────────────────────────────
 function validateEmail(v) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'Enter a valid email address.';
 }
@@ -15,7 +14,6 @@ function validateName(v) {
   return v.trim().length >= 2 ? '' : 'Enter your full name.';
 }
 
-// ── Eye toggle icon ───────────────────────────────────────────────────────────
 function EyeIcon({ visible }) {
   return visible ? (
     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -29,7 +27,6 @@ function EyeIcon({ visible }) {
   );
 }
 
-// ── Input field with validation state ────────────────────────────────────────
 function Field({ label, id, type = 'text', value, onChange, onBlur, error, touched, placeholder, rightSlot }) {
   const isValid = touched && !error && value;
   return (
@@ -52,7 +49,7 @@ function Field({ label, id, type = 'text', value, onChange, onBlur, error, touch
                 : 'border-gray-200 focus:ring-orange-200 focus:border-orange-400 bg-white'
           }`}
         />
-        {/* State icon */}
+        
         <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
           {rightSlot}
           {touched && error && (
@@ -76,7 +73,6 @@ function Field({ label, id, type = 'text', value, onChange, onBlur, error, touch
   );
 }
 
-// ── Password strength meter ───────────────────────────────────────────────────
 function PasswordStrength({ password }) {
   if (!password) return null;
   const checks = [
@@ -104,7 +100,6 @@ function PasswordStrength({ password }) {
   );
 }
 
-// ── Social login button ───────────────────────────────────────────────────────
 function SocialButton({ icon, label, onClick }) {
   return (
     <button
@@ -118,7 +113,6 @@ function SocialButton({ icon, label, onClick }) {
   );
 }
 
-// ── Sign In form ──────────────────────────────────────────────────────────────
 function SignInForm({ onSuccess }) {
   const { login } = useAuthContext();
   const [email, setEmail]         = useState('');
@@ -146,7 +140,6 @@ function SignInForm({ onSuccess }) {
     setLoading(true);
     setServerError('');
 
-    // Simulate auth — replace with real API call
     await new Promise(r => setTimeout(r, 900));
 
     const userData = {
@@ -210,7 +203,6 @@ function SignInForm({ onSuccess }) {
   );
 }
 
-// ── Register form ─────────────────────────────────────────────────────────────
 function RegisterForm({ onSuccess }) {
   const { register } = useAuthContext();
   const [name, setName]           = useState('');
@@ -307,7 +299,6 @@ function RegisterForm({ onSuccess }) {
   );
 }
 
-// ── Success screen ────────────────────────────────────────────────────────────
 function SuccessScreen({ mode, name, redirectTo }) {
   const router = useRouter();
   useEffect(() => {
@@ -338,7 +329,6 @@ function SuccessScreen({ mode, name, redirectTo }) {
   );
 }
 
-// ── Main auth page ────────────────────────────────────────────────────────────
 function AuthContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -351,7 +341,6 @@ function AuthContent() {
   const [done, setDone]       = useState(false);
   const [doneUser, setDoneUser] = useState(null);
 
-  // Already logged in → redirect
   useEffect(() => {
     if (user) router.replace(redirectTo);
   }, [user]);
@@ -385,7 +374,7 @@ function AuthContent() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4">
       <div className="w-full max-w-md">
 
-        {/* Brand header */}
+        
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2 mb-4">
             <div className="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm"
@@ -404,10 +393,10 @@ function AuthContent() {
           </p>
         </div>
 
-        {/* Card */}
+        
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
 
-          {/* Mode tabs */}
+          
           <div className="flex bg-gray-100 rounded-xl p-1 mb-6">
             {[
               { key: 'login',    label: 'Sign In' },
@@ -424,26 +413,26 @@ function AuthContent() {
             ))}
           </div>
 
-          {/* Social logins */}
+          
           <div className="space-y-2.5 mb-5">
             <SocialButton icon={googleIcon} label="Continue with Google" onClick={() => {}} />
             <SocialButton icon={appleIcon} label="Continue with Apple" onClick={() => {}} />
           </div>
 
-          {/* Divider */}
+          
           <div className="flex items-center gap-3 mb-5">
             <div className="flex-1 h-px bg-gray-200"/>
             <span className="text-xs text-gray-400 font-medium">or continue with email</span>
             <div className="flex-1 h-px bg-gray-200"/>
           </div>
 
-          {/* Forms */}
+          
           {mode === 'login'
             ? <SignInForm onSuccess={handleSuccess} />
             : <RegisterForm onSuccess={handleSuccess} />
           }
 
-          {/* Switch mode */}
+          
           <p className="text-center text-sm text-gray-500 mt-5">
             {mode === 'login' ? (
               <>Don't have an account?{' '}
@@ -461,7 +450,7 @@ function AuthContent() {
           </p>
         </div>
 
-        {/* Member perks */}
+        
         <div className="mt-6 grid grid-cols-3 gap-3 text-center">
           {[
             { icon: '🎁', label: 'Exclusive deals' },
@@ -475,7 +464,7 @@ function AuthContent() {
           ))}
         </div>
 
-        {/* Redirect context banner */}
+        
         {redirectTo !== '/' && (
           <div className="mt-4 flex items-center gap-2 bg-orange-50 border border-orange-100 rounded-xl px-4 py-3">
             <svg className="w-4 h-4 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

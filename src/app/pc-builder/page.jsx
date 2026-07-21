@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useCartContext } from '@/context/CartContext';
 import { useCurrency } from '@/context/CurrencyContext';
 
-// ── Part Categories ────────────────────────────────────────────────────────────
 const PART_CATEGORIES = [
   {
     id: 'cpu', label: 'CPU', required: true, icon: '🧠',
@@ -100,7 +99,6 @@ const PART_CATEGORIES = [
   },
 ];
 
-// ── Peripheral Categories ──────────────────────────────────────────────────────
 const PERIPHERAL_CATEGORIES = [
   {
     id: 'keyboard', label: 'Keyboard', required: false, icon: '⌨️',
@@ -144,7 +142,6 @@ const PERIPHERAL_CATEGORIES = [
   },
 ];
 
-// ── Products ───────────────────────────────────────────────────────────────────
 const PRODUCTS = {
   cpu: [
     { id: 'cpu1', name: 'AMD Ryzen 9 7950X', brand: 'AMD', price: 549, tdp: 170, socket: 'AM5', cores: 16, threads: 32, boost: '5.7 GHz', img: '🔴', rating: 4.9, tag: 'Flagship', powerScore: 95 },
@@ -241,18 +238,18 @@ const BUILD_PRESETS = [
     color: '#22c55e',
     tag: 'BEST VALUE',
     parts: {
-      cpu: 'cpu5',       // AMD Ryzen 5 7600X
-      cooler: 'cooler4', // be quiet! Dark Rock Pro 4
+      cpu: 'cpu5',
+      cooler: 'cooler4',
       motherboard: 'mb4',// ASUS ROG Strix B650E-F
-      ram: 'ram3',       // Kingston Fury Beast 16GB
-      storage: 'ssd4',   // Crucial P3 Plus 2TB
-      gpu: 'gpu5',       // AMD Radeon RX 7800 XT
-      psu: 'psu3',       // Seasonic Focus GX-750
-      case: 'case3',     // NZXT H9 Flow
+      ram: 'ram3',
+      storage: 'ssd4',
+      gpu: 'gpu5',
+      psu: 'psu3',
+      case: 'case3',
     },
     peripherals: {
-      keyboard: 'kb3',   // Keychron Q3 Pro
-      mouse: 'ms5',      // Pulsar X2H Wireless
+      keyboard: 'kb3',
+      mouse: 'ms5',
     },
   },
   {
@@ -263,19 +260,19 @@ const BUILD_PRESETS = [
     color: '#f4874b',
     tag: 'POPULAR',
     parts: {
-      cpu: 'cpu3',       // AMD Ryzen 7 7700X
-      cooler: 'cooler2', // NZXT Kraken X73
+      cpu: 'cpu3',
+      cooler: 'cooler2',
       motherboard: 'mb4',// ASUS ROG Strix B650E-F
-      ram: 'ram1',       // Corsair Dominator DDR5 32GB
-      storage: 'ssd2',   // WD Black SN850X 1TB
-      gpu: 'gpu4',       // RTX 4070 Ti Super
-      psu: 'psu2',       // EVGA SuperNOVA 850 G7
-      case: 'case1',     // Lian Li O11 Dynamic EVO
-      monitor: 'mon3',   // ASUS ROG Swift QHD 240Hz
+      ram: 'ram1',
+      storage: 'ssd2',
+      gpu: 'gpu4',
+      psu: 'psu2',
+      case: 'case1',
+      monitor: 'mon3',
     },
     peripherals: {
-      keyboard: 'kb2',   // Logitech G915 TKL Wireless
-      mouse: 'ms1',      // Logitech G Pro X Superlight 2
+      keyboard: 'kb2',
+      mouse: 'ms1',
     },
   },
   {
@@ -286,21 +283,21 @@ const BUILD_PRESETS = [
     color: '#e8517a',
     tag: 'NO LIMITS',
     parts: {
-      cpu: 'cpu1',       // AMD Ryzen 9 7950X
-      cooler: 'cooler3', // Corsair iCUE H150i Elite
+      cpu: 'cpu1',
+      cooler: 'cooler3',
       motherboard: 'mb2',// MSI MEG X670E ACE
-      ram: 'ram2',       // G.Skill Trident Z5 RGB 32GB
-      storage: 'ssd1',   // Samsung 990 Pro 2TB
-      gpu: 'gpu1',       // RTX 4090 24GB
-      psu: 'psu1',       // Corsair HX1000i 1000W
-      case: 'case2',     // Fractal Design Torrent
-      monitor: 'mon1',   // LG 27GP950-B 4K 144Hz
+      ram: 'ram2',
+      storage: 'ssd1',
+      gpu: 'gpu1',
+      psu: 'psu1',
+      case: 'case2',
+      monitor: 'mon1',
     },
     peripherals: {
-      keyboard: 'kb1',   // Corsair K100 RGB
-      mouse: 'ms1',      // Logitech G Pro X Superlight 2
-      headset: 'hs1',    // SteelSeries Arctis Nova Pro
-      webcam: 'wc1',     // Logitech Brio 4K Pro
+      keyboard: 'kb1',
+      mouse: 'ms1',
+      headset: 'hs1',
+      webcam: 'wc1',
     },
   },
   {
@@ -311,21 +308,21 @@ const BUILD_PRESETS = [
     color: '#a855f7',
     tag: 'CREATOR',
     parts: {
-      cpu: 'cpu2',       // Intel Core i9-13900K
-      cooler: 'cooler1', // Noctua NH-D15
+      cpu: 'cpu2',
+      cooler: 'cooler1',
       motherboard: 'mb1',// ASUS ROG Maximus Z790
-      ram: 'ram4',       // Teamgroup T-Force 64GB
-      storage: 'ssd3',   // Seagate FireCuda 530 4TB
-      gpu: 'gpu3',       // AMD Radeon RX 7900 XTX
-      psu: 'psu4',       // be quiet! Straight Power 12 1000W
-      case: 'case4',     // Corsair iCUE 5000X RGB
-      monitor: 'mon2',   // Samsung Odyssey G9 49"
+      ram: 'ram4',
+      storage: 'ssd3',
+      gpu: 'gpu3',
+      psu: 'psu4',
+      case: 'case4',
+      monitor: 'mon2',
     },
     peripherals: {
-      keyboard: 'kb3',   // Keychron Q3 Pro
-      mouse: 'ms2',      // Razer DeathAdder V3 Pro
-      headset: 'hs2',    // Logitech G Pro X 2 Lightspeed
-      webcam: 'wc3',     // Elgato Facecam Pro
+      keyboard: 'kb3',
+      mouse: 'ms2',
+      headset: 'hs2',
+      webcam: 'wc3',
     },
   },
   {
@@ -336,20 +333,20 @@ const BUILD_PRESETS = [
     color: '#f5c518',
     tag: 'COMPETITIVE',
     parts: {
-      cpu: 'cpu6',       // Intel Core i5-13600K
-      cooler: 'cooler4', // be quiet! Dark Rock Pro 4
+      cpu: 'cpu6',
+      cooler: 'cooler4',
       motherboard: 'mb3',// Gigabyte Z790 AORUS Master
-      ram: 'ram1',       // Corsair Dominator DDR5 32GB
-      storage: 'ssd2',   // WD Black SN850X 1TB
-      gpu: 'gpu5',       // AMD Radeon RX 7800 XT
-      psu: 'psu2',       // EVGA SuperNOVA 850 G7
-      case: 'case3',     // NZXT H9 Flow
-      monitor: 'mon3',   // ASUS ROG Swift 240Hz
+      ram: 'ram1',
+      storage: 'ssd2',
+      gpu: 'gpu5',
+      psu: 'psu2',
+      case: 'case3',
+      monitor: 'mon3',
     },
     peripherals: {
-      keyboard: 'kb4',   // SteelSeries Apex Pro
-      mouse: 'ms1',      // Logitech G Pro X Superlight 2
-      headset: 'hs4',    // Razer BlackShark V2 HyperSpeed
+      keyboard: 'kb4',
+      mouse: 'ms1',
+      headset: 'hs4',
     },
   },
   {
@@ -360,21 +357,21 @@ const BUILD_PRESETS = [
     color: '#06b6d4',
     tag: 'STREAMING',
     parts: {
-      cpu: 'cpu4',       // Intel Core i7-13700K
-      cooler: 'cooler2', // NZXT Kraken X73
+      cpu: 'cpu4',
+      cooler: 'cooler2',
       motherboard: 'mb3',// Gigabyte Z790 AORUS Master
-      ram: 'ram4',       // Teamgroup T-Force 64GB
-      storage: 'ssd1',   // Samsung 990 Pro 2TB
-      gpu: 'gpu2',       // RTX 4080 Super
-      psu: 'psu1',       // Corsair HX1000i 1000W
-      case: 'case4',     // Corsair iCUE 5000X RGB
-      monitor: 'mon1',   // LG 27GP950-B 4K 144Hz
+      ram: 'ram4',
+      storage: 'ssd1',
+      gpu: 'gpu2',
+      psu: 'psu1',
+      case: 'case4',
+      monitor: 'mon1',
     },
     peripherals: {
-      keyboard: 'kb5',   // Razer BlackWidow V4 Pro
-      mouse: 'ms2',      // Razer DeathAdder V3 Pro
-      headset: 'hs1',    // SteelSeries Arctis Nova Pro
-      webcam: 'wc2',     // Razer Kiyo Pro Ultra
+      keyboard: 'kb5',
+      mouse: 'ms2',
+      headset: 'hs1',
+      webcam: 'wc2',
     },
   },
   {
@@ -385,19 +382,19 @@ const BUILD_PRESETS = [
     color: '#64748b',
     tag: 'SILENT',
     parts: {
-      cpu: 'cpu3',       // AMD Ryzen 7 7700X
-      cooler: 'cooler1', // Noctua NH-D15
+      cpu: 'cpu3',
+      cooler: 'cooler1',
       motherboard: 'mb4',// ASUS ROG Strix B650E-F
-      ram: 'ram2',       // G.Skill Trident Z5 RGB 32GB
-      storage: 'ssd1',   // Samsung 990 Pro 2TB
-      gpu: 'gpu4',       // RTX 4070 Ti Super
-      psu: 'psu4',       // be quiet! Straight Power 12 1000W
-      case: 'case2',     // Fractal Design Torrent
-      monitor: 'mon3',   // ASUS ROG Swift QHD 240Hz
+      ram: 'ram2',
+      storage: 'ssd1',
+      gpu: 'gpu4',
+      psu: 'psu4',
+      case: 'case2',
+      monitor: 'mon3',
     },
     peripherals: {
-      keyboard: 'kb2',   // Logitech G915 TKL Wireless
-      mouse: 'ms4',      // Corsair M75 Air Wireless
+      keyboard: 'kb2',
+      mouse: 'ms4',
     },
   },
   {
@@ -408,25 +405,24 @@ const BUILD_PRESETS = [
     color: '#ec4899',
     tag: 'AESTHETIC',
     parts: {
-      cpu: 'cpu4',       // Intel Core i7-13700K
-      cooler: 'cooler3', // Corsair iCUE H150i Elite
+      cpu: 'cpu4',
+      cooler: 'cooler3',
       motherboard: 'mb1',// ASUS ROG Maximus Z790
-      ram: 'ram2',       // G.Skill Trident Z5 RGB 32GB
-      storage: 'ssd1',   // Samsung 990 Pro 2TB
-      gpu: 'gpu2',       // RTX 4080 Super
-      psu: 'psu1',       // Corsair HX1000i 1000W
-      case: 'case4',     // Corsair iCUE 5000X RGB
-      monitor: 'mon3',   // ASUS ROG Swift QHD 240Hz
+      ram: 'ram2',
+      storage: 'ssd1',
+      gpu: 'gpu2',
+      psu: 'psu1',
+      case: 'case4',
+      monitor: 'mon3',
     },
     peripherals: {
-      keyboard: 'kb1',   // Corsair K100 RGB
-      mouse: 'ms4',      // Corsair M75 Air Wireless
-      headset: 'hs5',    // Corsair HS80 RGB Wireless
+      keyboard: 'kb1',
+      mouse: 'ms4',
+      headset: 'hs5',
     },
   },
 ];
 
-// ── Power Score helpers ────────────────────────────────────────────────────────
 function calcPowerScore(selectedParts) {
   const cpuScore = selectedParts.cpu?.powerScore || 0;
   const gpuScore = selectedParts.gpu?.powerScore || 0;
@@ -445,7 +441,6 @@ function getPCTier(score) {
   return { label: 'POTATO PC', emoji: '🥔', color: '#94a3b8', glow: 'rgba(148,163,184,0.2)', sub: 'Can it run Minesweeper?' };
 }
 
-// ── Print helpers ──────────────────────────────────────────────────────────────
 function triggerPrint(buildName, selectedParts, selectedPeripherals, totalPrice, totalWattage, powerScore, currency) {
   const allCats = [
     ...PART_CATEGORIES,
@@ -554,7 +549,6 @@ function triggerPrint(buildName, selectedParts, selectedPeripherals, totalPrice,
   setTimeout(() => win.print(), 400);
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 export default function PCBuilderPage() {
   const { addItem, openCart } = useCartContext();
   const { format, currency } = useCurrency();
@@ -562,7 +556,7 @@ export default function PCBuilderPage() {
   const [selectedParts, setSelectedParts] = useState({});
   const [selectedPeripherals, setSelectedPeripherals] = useState({});
   const [activeCategory, setActiveCategory] = useState(null);
-  const [activeSection, setActiveSection] = useState('parts'); // 'parts' | 'peripherals'
+  const [activeSection, setActiveSection] = useState('parts');
   const [searchFilter, setSearchFilter] = useState('');
   const [brandFilter, setBrandFilter] = useState('All');
   const [totalWattage, setTotalWattage] = useState(0);
@@ -580,7 +574,6 @@ export default function PCBuilderPage() {
   const animFrameRef = useRef(null);
   const scoreAnimRef = useRef(null);
 
-  // Totals
   useEffect(() => {
     let price = 0, watts = 0;
     Object.values(selectedParts).forEach(p => { price += p.price || 0; watts += (p.tdp || p.power || 0); });
@@ -591,7 +584,6 @@ export default function PCBuilderPage() {
     setPowerScore(score);
   }, [selectedParts, selectedPeripherals]);
 
-  // Animate power score bar
   useEffect(() => {
     clearInterval(scoreAnimRef.current);
     const target = powerScore;
@@ -607,7 +599,6 @@ export default function PCBuilderPage() {
     return () => clearInterval(scoreAnimRef.current);
   }, [powerScore]);
 
-  // Particle canvas
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -645,7 +636,6 @@ export default function PCBuilderPage() {
 
   const applyPreset = (preset) => {
     setPresetApplying(preset.name);
-    // Resolve part IDs to actual part objects
     const resolvedParts = {};
     Object.entries(preset.parts).forEach(([catId, partId]) => {
       const product = (PRODUCTS[catId] || []).find(p => p.id === partId);
@@ -748,7 +738,7 @@ export default function PCBuilderPage() {
         transition: 'border-color 0.3s',
         boxShadow: isGlowing ? '0 0 30px rgba(232,81,122,0.2)' : 'none',
       }}>
-        {/* Header row */}
+        
         <div
           onClick={() => { setActiveSection(section); setActiveCategory(isOpen ? null : cat.id); setSearchFilter(''); setBrandFilter('All'); }}
           style={{ background: selected ? 'rgba(232,81,122,0.06)' : 'rgba(255,255,255,0.03)', padding: '16px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 16, transition: 'background 0.2s', userSelect: 'none' }}
@@ -791,7 +781,7 @@ export default function PCBuilderPage() {
           </div>
         </div>
 
-        {/* Dropdown */}
+        
         {isOpen && (
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(20px)', padding: 20, animation: 'slideDown 0.25s ease-out' }}>
             <div style={{ display: 'flex', gap: 10, marginBottom: 16 }}>
@@ -881,7 +871,7 @@ export default function PCBuilderPage() {
       <div style={{ position: 'fixed', bottom: '-20%', right: '-10%', width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,135,75,0.10) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
 
       <div style={{ position: 'relative', zIndex: 1 }}>
-        {/* Header */}
+        
         <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '16px 24px', display: 'flex', alignItems: 'center', gap: 12, backdropFilter: 'blur(20px)', background: 'rgba(10,10,15,0.8)' }}>
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgba(255,255,255,0.5)', fontSize: 13, transition: 'color 0.2s' }}
             onMouseEnter={e => e.currentTarget.style.color = '#f4874b'}
@@ -896,7 +886,7 @@ export default function PCBuilderPage() {
         </div>
 
         <div style={{ maxWidth: 1400, margin: '0 auto', padding: '24px 24px 80px' }}>
-          {/* Hero */}
+          
           <div style={{ textAlign: 'center', marginBottom: 48, paddingTop: 16 }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(232,81,122,0.1)', border: '1px solid rgba(232,81,122,0.25)', borderRadius: 100, padding: '6px 16px', marginBottom: 16 }}>
               <span style={{ fontSize: 12, color: '#e8517a', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>⚡ Custom Build Studio</span>
@@ -910,7 +900,7 @@ export default function PCBuilderPage() {
             </p>
           </div>
 
-          {/* Presets */}
+          
           <div style={{ marginBottom: 40 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
               <h2 style={{ fontSize: 16, fontWeight: 700, color: 'rgba(255,255,255,0.8)', margin: 0 }}>⚡ Quick Start Presets</h2>
@@ -920,7 +910,6 @@ export default function PCBuilderPage() {
               {BUILD_PRESETS.map(preset => {
                 const isActive = activePreset === preset.name;
                 const isApplying = presetApplying === preset.name;
-                // Calculate preset total
                 const presetTotal = Object.entries(preset.parts).reduce((sum, [catId, partId]) => {
                   const p = (PRODUCTS[catId] || []).find(x => x.id === partId);
                   return sum + (p?.price || 0);
@@ -968,7 +957,7 @@ export default function PCBuilderPage() {
                         e.currentTarget.style.boxShadow = 'none';
                       }
                     }}>
-                    {/* Active glow sweep */}
+                    
                     {isActive && (
                       <div style={{
                         position: 'absolute', inset: 0, opacity: 0.06,
@@ -977,7 +966,7 @@ export default function PCBuilderPage() {
                       }} />
                     )}
 
-                    {/* Tag */}
+                    
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
                       <span style={{ fontSize: 28 }}>{isApplying ? '✨' : preset.emoji}</span>
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}>
@@ -1001,7 +990,7 @@ export default function PCBuilderPage() {
                       {preset.desc}
                     </div>
 
-                    {/* Stats row */}
+                    
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ color: preset.color, fontSize: 13, fontWeight: 700 }}>
                         {currency.symbol}{(presetTotal * currency.rate).toLocaleString(undefined, { maximumFractionDigits: 0 })}
@@ -1011,14 +1000,14 @@ export default function PCBuilderPage() {
                       </div>
                     </div>
 
-                    {/* Progress bar at bottom */}
+                    
                     {isActive && (
                       <div style={{ marginTop: 10, height: 3, background: 'rgba(255,255,255,0.1)', borderRadius: 100, overflow: 'hidden' }}>
                         <div style={{ height: '100%', width: '100%', background: preset.color, borderRadius: 100 }} />
                       </div>
                     )}
 
-                    {/* Hover CTA */}
+                    
                     {!isActive && (
                       <div style={{ marginTop: 10, fontSize: 11, color: 'rgba(255,255,255,0.25)', display: 'flex', alignItems: 'center', gap: 4 }}>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: 10, height: 10 }}>
@@ -1033,12 +1022,12 @@ export default function PCBuilderPage() {
             </div>
           </div>
 
-          {/* Main layout */}
+          
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 24, alignItems: 'start' }}>
 
-            {/* Left: Parts */}
+            
             <div>
-              {/* Build name + progress */}
+              
               <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20, padding: '20px 24px', marginBottom: 20 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 16 }}>
                   <div style={{ flex: 1, minWidth: 200 }}>
@@ -1061,7 +1050,7 @@ export default function PCBuilderPage() {
                   </div>
                 </div>
 
-                {/* ── PC POWER METER ── */}
+                
                 <div style={{ background: 'rgba(0,0,0,0.3)', borderRadius: 16, padding: '16px 20px', border: `1px solid ${animatedScore > 0 ? tier.color + '40' : 'rgba(255,255,255,0.06)'}`, transition: 'border-color 0.5s', boxShadow: animatedScore > 50 ? `0 0 30px ${tier.glow}` : 'none' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
                     <div>
@@ -1077,7 +1066,7 @@ export default function PCBuilderPage() {
                       <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>/100</div>
                     </div>
                   </div>
-                  {/* Segmented bar */}
+                  
                   <div style={{ position: 'relative', height: 10, background: 'rgba(255,255,255,0.06)', borderRadius: 100, overflow: 'hidden' }}>
                     <div style={{
                       height: '100%', width: `${animatedScore}%`,
@@ -1092,7 +1081,7 @@ export default function PCBuilderPage() {
                       boxShadow: `0 0 12px ${tier.glow}`,
                     }} />
                   </div>
-                  {/* Scale labels */}
+                  
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6, fontSize: 10, color: 'rgba(255,255,255,0.25)' }}>
                     <span>🥔 Potato</span>
                     <span>🎯 Entry</span>
@@ -1103,7 +1092,7 @@ export default function PCBuilderPage() {
                 </div>
               </div>
 
-              {/* ── SECTION TABS ── */}
+              
               <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
                 {[
                   { key: 'parts', label: '🖥️ Core Components', count: Object.keys(selectedParts).length, total: PART_CATEGORIES.length },
@@ -1127,7 +1116,7 @@ export default function PCBuilderPage() {
                 ))}
               </div>
 
-              {/* Parts / Peripherals list */}
+              
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {activeSection === 'parts'
                   ? PART_CATEGORIES.map(cat => renderCategoryRow(cat, 'parts'))
@@ -1135,9 +1124,9 @@ export default function PCBuilderPage() {
               </div>
             </div>
 
-            {/* Right: Summary panel */}
+            
             <div style={{ position: 'sticky', top: 20 }}>
-              {/* Price card */}
+              
               <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20, padding: 24, marginBottom: 16 }}>
                 <div style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16 }}>Build Summary</div>
 
@@ -1157,7 +1146,7 @@ export default function PCBuilderPage() {
                     );
                   })}
 
-                  {/* Peripherals in summary */}
+                  
                   {Object.keys(selectedPeripherals).length > 0 && (
                     <>
                       <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', margin: '4px 0' }} />
@@ -1199,7 +1188,7 @@ export default function PCBuilderPage() {
                   </div>
                 </div>
 
-                {/* Add to Cart */}
+                
                 <button
                   disabled={!requiredSelected}
                   onClick={handleAddAllToCart}
@@ -1224,7 +1213,7 @@ export default function PCBuilderPage() {
                   </div>
                 )}
 
-                {/* Print button */}
+                
                 {completedCount > 0 && (
                   <button
                     onClick={() => triggerPrint(buildName, selectedParts, selectedPeripherals, totalPrice, totalWattage, powerScore, currency)}
@@ -1243,7 +1232,7 @@ export default function PCBuilderPage() {
                 )}
               </div>
 
-              {/* Compatibility */}
+              
               <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20, padding: 20 }}>
                 <div style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 14 }}>Compatibility</div>
                 {completedCount === 0 ? (

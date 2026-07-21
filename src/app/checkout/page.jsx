@@ -10,7 +10,6 @@ import { validateCoupon, calcDiscount, couponFreesShipping } from '@/lib/coupons
 
 const STEPS = ['Shipping', 'Payment', 'Confirmation'];
 
-// ── Step indicator ────────────────────────────────────────────────────────────
 function StepIndicator({ current }) {
   return (
     <div className="flex items-center justify-center mb-10">
@@ -42,7 +41,6 @@ function StepIndicator({ current }) {
   );
 }
 
-// ── Spinner ───────────────────────────────────────────────────────────────────
 function Spinner({ size = 8 }) {
   return (
     <svg className={`animate-spin w-${size} h-${size}`} viewBox="0 0 24 24" fill="none">
@@ -52,7 +50,6 @@ function Spinner({ size = 8 }) {
   );
 }
 
-// ── Order processing animation ────────────────────────────────────────────────
 const PROCESSING_STEPS = [
   { label: 'Verifying your order',       icon: '🔍', duration: 1200 },
   { label: 'Securing payment details',   icon: '🔒', duration: 1400 },
@@ -138,7 +135,6 @@ function PlacingOrderScreen({ onDone }) {
   );
 }
 
-// ── Auth gate shown inside checkout if not logged in ──────────────────────────
 function AuthGate({ onContinueAsGuest }) {
   const router = useRouter();
   return (
@@ -147,7 +143,7 @@ function AuthGate({ onContinueAsGuest }) {
       <p className="text-sm text-gray-500 mb-6">Sign in to track your order, earn rewards, and check out faster next time.</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-        {/* Sign in card */}
+        
         <button
           onClick={() => router.push('/auth?redirect=/checkout')}
           className="group flex flex-col items-start p-5 rounded-2xl border-2 border-gray-200 hover:border-orange-400 hover:bg-orange-50 transition-all text-left"
@@ -162,7 +158,7 @@ function AuthGate({ onContinueAsGuest }) {
           <p className="text-xs text-gray-500">Track orders, earn rewards & faster checkout</p>
         </button>
 
-        {/* Guest card */}
+        
         <button
           onClick={onContinueAsGuest}
           className="group flex flex-col items-start p-5 rounded-2xl border-2 border-gray-200 hover:border-gray-400 hover:bg-gray-50 transition-all text-left"
@@ -185,7 +181,6 @@ function AuthGate({ onContinueAsGuest }) {
   );
 }
 
-// ── Promo code widget ─────────────────────────────────────────────────────────
 function PromoCodeField({ subtotal, appliedCoupon, appliedCode, onApply, onRemove }) {
   const [open, setOpen]       = useState(!!appliedCoupon);
   const [input, setInput]     = useState(appliedCode || '');
@@ -193,7 +188,6 @@ function PromoCodeField({ subtotal, appliedCoupon, appliedCode, onApply, onRemov
   const [error, setError]     = useState('');
   const [success, setSuccess] = useState('');
 
-  // Auto-apply from URL ?promo= param handled by parent; reflect it here
   useEffect(() => {
     if (appliedCode) { setInput(appliedCode); setOpen(true); }
   }, [appliedCode]);
@@ -204,7 +198,6 @@ function PromoCodeField({ subtotal, appliedCoupon, appliedCode, onApply, onRemov
     if (!input.trim()) { setError('Please enter a promo code.'); return; }
     setLoading(true);
 
-    // Simulate async validation (real impl would hit an API)
     setTimeout(() => {
       const result = validateCoupon(input, subtotal);
       setLoading(false);
@@ -230,7 +223,7 @@ function PromoCodeField({ subtotal, appliedCoupon, appliedCode, onApply, onRemov
 
   return (
     <div className="border-t pt-4 mt-2">
-      {/* Collapsed toggle */}
+      
       {!open ? (
         <button
           onClick={() => setOpen(true)}
@@ -250,7 +243,7 @@ function PromoCodeField({ subtotal, appliedCoupon, appliedCode, onApply, onRemov
             Promo Code
           </p>
 
-          {/* Applied state */}
+          
           {appliedCoupon ? (
             <div className="flex items-center justify-between bg-green-50 border border-green-200 rounded-xl px-4 py-3">
               <div className="flex items-center gap-2">
@@ -273,7 +266,6 @@ function PromoCodeField({ subtotal, appliedCoupon, appliedCode, onApply, onRemov
               </button>
             </div>
           ) : (
-            /* Input row */
             <div className="flex gap-2">
               <input
                 type="text"
@@ -296,7 +288,7 @@ function PromoCodeField({ subtotal, appliedCoupon, appliedCode, onApply, onRemov
             </div>
           )}
 
-          {/* Error */}
+          
           {error && (
             <p className="flex items-center gap-1.5 text-xs text-red-600 animate-fade-in">
               <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -306,7 +298,7 @@ function PromoCodeField({ subtotal, appliedCoupon, appliedCode, onApply, onRemov
             </p>
           )}
 
-          {/* Dismiss toggle when no coupon applied */}
+          
           {!appliedCoupon && (
             <button onClick={() => { setOpen(false); setError(''); }} className="text-xs text-gray-400 hover:text-gray-500 transition-colors">
               Cancel
@@ -318,7 +310,6 @@ function PromoCodeField({ subtotal, appliedCoupon, appliedCode, onApply, onRemov
   );
 }
 
-// ── Shipping step ─────────────────────────────────────────────────────────────
 function ShippingStep({ data, onChange, onNext }) {
   const fields = [
     { id: 'firstName', label: 'First Name', half: true },
@@ -361,7 +352,6 @@ function ShippingStep({ data, onChange, onNext }) {
   );
 }
 
-// ── Payment step ──────────────────────────────────────────────────────────────
 function PaymentStep({ onNext, onBack }) {
   const [method, setMethod] = useState('card');
   const handleSubmit = (e) => { e.preventDefault(); onNext(); };
@@ -467,7 +457,6 @@ function PaymentStep({ onNext, onBack }) {
   );
 }
 
-// ── Confirmation step ─────────────────────────────────────────────────────────
 function ConfirmationStep({ shipping }) {
   const orderId = `GT-${Math.floor(100000 + Math.random() * 900000)}`;
   return (
@@ -502,7 +491,6 @@ function ConfirmationStep({ shipping }) {
   );
 }
 
-// ── Main checkout page ────────────────────────────────────────────────────────
 export default function CheckoutPage() {
   const { items, subtotal, clearCart } = useCartContext();
   const { toast } = useToastContext();
@@ -515,11 +503,9 @@ export default function CheckoutPage() {
   const [processing, setProcessing] = useState(false);
   const [shipping, setShipping]   = useState({ delivery: 'Standard (3-5 days) — Free' });
 
-  // Coupon state
   const [appliedCode, setAppliedCode]     = useState('');
   const [appliedCoupon, setAppliedCoupon] = useState(null);
 
-  // Auto-apply promo from URL (?promo=CODE)
   useEffect(() => {
     const urlPromo = searchParams?.get('promo');
     if (urlPromo && !appliedCode) {
@@ -580,7 +566,7 @@ export default function CheckoutPage() {
         <StepIndicator current={step} />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* ── Left: step forms ── */}
+          
           <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm p-6 min-h-96">
             {processing ? (
               <PlacingOrderScreen onDone={handleProcessingDone} />
@@ -602,12 +588,12 @@ export default function CheckoutPage() {
             )}
           </div>
 
-          {/* ── Right: order summary ── */}
+          
           {step < 2 && !processing && (
             <div className="bg-white rounded-2xl shadow-sm p-6 h-fit space-y-0">
               <h3 className="font-semibold text-gray-800 mb-4">Order Summary</h3>
 
-              {/* Items */}
+              
               <div className="space-y-3 mb-4">
                 {items.map((item) => (
                   <div key={item.id} className="flex items-center gap-3 text-sm">
@@ -623,7 +609,7 @@ export default function CheckoutPage() {
                 ))}
               </div>
 
-              {/* Promo code widget */}
+              
               <PromoCodeField
                 subtotal={subtotal}
                 appliedCoupon={appliedCoupon}
@@ -640,13 +626,13 @@ export default function CheckoutPage() {
                 }}
               />
 
-              {/* Totals */}
+              
               <div className="border-t pt-4 mt-4 space-y-2 text-sm">
                 <div className="flex justify-between text-gray-500">
                   <span>Subtotal</span><span>{format(subtotal)}</span>
                 </div>
 
-                {/* Discount line — only shown when coupon applied and has monetary value */}
+                
                 {appliedCoupon && discountAmt > 0 && (
                   <div className="flex justify-between text-green-600 font-medium">
                     <span className="flex items-center gap-1">
@@ -680,7 +666,7 @@ export default function CheckoutPage() {
                   <span className="text-orange-500">{format(total)}</span>
                 </div>
 
-                {/* Savings callout */}
+                
                 {(discountAmt > 0 || shippingFree) && (
                   <div className="flex items-center gap-2 bg-green-50 border border-green-100 rounded-xl px-3 py-2 mt-2">
                     <span className="text-base">🎉</span>
@@ -691,7 +677,7 @@ export default function CheckoutPage() {
                 )}
               </div>
 
-              {/* Signed-in user badge */}
+              
               {user && (
                 <div className="mt-4 flex items-center gap-2 bg-orange-50 border border-orange-100 rounded-xl px-3 py-2">
                   <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
@@ -710,6 +696,3 @@ export default function CheckoutPage() {
     </div>
   );
 }
-// Note: If Next.js requires Suspense for useSearchParams, wrap with:
-// import { Suspense } from 'react';
-// export default function Page() { return <Suspense><CheckoutPage /></Suspense>; }

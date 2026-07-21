@@ -12,7 +12,7 @@ const Section = ({ title, children }) => (
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+      
       <div className="text-white py-16 px-4 text-center" style={{ background: 'linear-gradient(135deg,#e8517a,#f4874b)' }}>
         <h1 className="text-4xl font-bold mb-3">Privacy Policy</h1>
         <p className="text-white/80 text-sm">Last updated: January 1, 2025</p>

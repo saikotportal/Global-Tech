@@ -81,7 +81,6 @@ export default function ProductDetailPage({ params }) {
   const { toast }       = useToast();
   const wishlisted      = isWishlisted(product.id);
 
-  // Build image array — use product.images[] if available, else repeat the single image
   const images = (product.images && product.images.length > 0)
     ? product.images
     : [product.image, product.image, product.image, product.image];
@@ -121,7 +120,7 @@ export default function ProductDetailPage({ params }) {
 
   return (
     <div className="container-custom py-8 sm:py-12">
-      {/* Breadcrumb */}
+      
       <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
         <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>
         <span>/</span>
@@ -132,12 +131,12 @@ export default function ProductDetailPage({ params }) {
         <span className="text-dark-800 font-medium truncate max-w-[200px]">{product.name}</span>
       </nav>
 
-      {/* Main grid */}
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
 
-        {/* ── Image gallery ── */}
+        
         <div className="space-y-4">
-          {/* Main image */}
+          
           <div className="aspect-square bg-gray-50 rounded-3xl shadow-card relative overflow-hidden">
             <img
               src={selectedImage}
@@ -157,7 +156,7 @@ export default function ProductDetailPage({ params }) {
             )}
           </div>
 
-          {/* Thumbnail row — clicking switches main image */}
+          
           <div className="grid grid-cols-4 gap-3">
             {images.map((src, i) => (
               <button
@@ -178,11 +177,11 @@ export default function ProductDetailPage({ params }) {
           </div>
         </div>
 
-        {/* ── Product info ── */}
+        
         <div className="flex flex-col">
           <div className="flex items-start justify-between gap-4 mb-2">
             <span className="text-sm font-semibold text-orange-500 uppercase tracking-wide">{product.brand}</span>
-            {/* Wishlist button — connected to WishlistContext */}
+            
             <button
               onClick={() => {
                 toggle(product);
@@ -197,7 +196,7 @@ export default function ProductDetailPage({ params }) {
 
           <h1 className="font-display text-2xl sm:text-3xl font-bold text-dark-800 mb-3 leading-tight">{product.name}</h1>
 
-          {/* Rating */}
+          
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <div className="flex text-yellow-400">{'★'.repeat(Math.round(product.rating))}</div>
             <span className="font-semibold text-dark-800">{product.rating}</span>
@@ -207,7 +206,7 @@ export default function ProductDetailPage({ params }) {
             </span>
           </div>
 
-          {/* Stock countdown */}
+          
           {product.inStock && product.stock <= 10 && (
             <div className="flex items-center gap-2 mb-4 px-4 py-2.5 bg-red-50 border border-red-200 rounded-xl">
               <span className="text-lg">🔥</span>
@@ -215,10 +214,10 @@ export default function ProductDetailPage({ params }) {
             </div>
           )}
 
-          {/* Back in stock */}
+          
           {!product.inStock && <BackInStockButton product={product} />}
 
-          {/* Price */}
+          
           <div className="flex items-baseline gap-3 mb-6 p-4 bg-orange-50 rounded-2xl">
             <span className="font-display text-4xl font-bold text-dark-800">{format(product.price)}</span>
             {product.originalPrice > product.price && (
@@ -231,7 +230,7 @@ export default function ProductDetailPage({ params }) {
 
           <p className="text-gray-600 leading-relaxed mb-6">{product.description}</p>
 
-          {/* Shipping info */}
+          
           <div className="grid grid-cols-3 gap-3 mb-6">
             {[
               { icon: '🚚', label: 'Free Shipping', sub: 'Orders over $50' },
@@ -246,7 +245,7 @@ export default function ProductDetailPage({ params }) {
             ))}
           </div>
 
-          {/* Qty + Add to Cart */}
+          
           <div className="flex items-center gap-3 mb-4">
             <div className="flex items-center border-2 border-gray-200 rounded-xl overflow-hidden">
               <button onClick={() => setQty(q => Math.max(1, q - 1))} className="w-11 h-11 flex items-center justify-center hover:bg-gray-100 font-bold text-lg text-gray-600">−</button>
@@ -263,7 +262,7 @@ export default function ProductDetailPage({ params }) {
             </button>
           </div>
 
-          {/* Buy Now — adds product then goes to checkout */}
+          
           <button
             onClick={handleBuyNow}
             disabled={!product.inStock}
@@ -274,7 +273,7 @@ export default function ProductDetailPage({ params }) {
         </div>
       </div>
 
-      {/* ── Tabs ── */}
+      
       <div className="mb-16">
         <div className="flex gap-1 border-b border-gray-200 mb-6 overflow-x-auto">
           {TABS.map(({ key, label }) => (
@@ -378,7 +377,7 @@ export default function ProductDetailPage({ params }) {
         </div>
       </div>
 
-      {/* Related products */}
+      
       {related.length > 0 && (
         <div>
           <h2 className="section-title mb-6">Related Products</h2>

@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { PRODUCTS, CATEGORIES } from '@/lib/products';
 import ProductCard from '@/components/products/ProductCard';
 
-// ── Per-category config: hero gradient, accent, tagline, highlights, buying guide ──
 const CATEGORY_META = {
   phones: {
     gradient: 'from-violet-950 via-purple-900 to-indigo-900',
@@ -276,19 +275,19 @@ export default function CategoryPage() {
   return (
     <div className="min-h-screen bg-gray-50">
 
-      {/* ── HERO BANNER ───────────────────────────────────────────────── */}
+      
       <section className={`relative bg-gradient-to-br ${meta.gradient} overflow-hidden`}>
-        {/* decorative circles */}
+        
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-10"
           style={{ background: meta.accent, filter: 'blur(80px)' }} />
         <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full opacity-10"
           style={{ background: meta.accent, filter: 'blur(60px)' }} />
-        {/* dot grid */}
+        
         <div className="absolute inset-0 opacity-5"
           style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
 
         <div className="relative container-custom py-16 md:py-20">
-          {/* breadcrumb */}
+          
           <nav className="flex items-center gap-2 text-xs mb-8 opacity-60">
             <Link href="/" className="text-white hover:opacity-100 transition-opacity">Home</Link>
             <span className="text-white/40">›</span>
@@ -311,7 +310,7 @@ export default function CategoryPage() {
               <p className="text-white/60 text-sm leading-relaxed">{meta.description}</p>
             </div>
 
-            {/* highlight pills */}
+            
             {meta.highlights.length > 0 && (
               <div className="flex flex-wrap gap-2 md:justify-end">
                 {meta.highlights.map(h => (
@@ -325,7 +324,7 @@ export default function CategoryPage() {
             )}
           </div>
 
-          {/* stats row */}
+          
           <div className="flex flex-wrap gap-6 mt-10 pt-8 border-t border-white/10">
             <div>
               <p className="text-2xl font-bold text-white">{allCategoryProducts.length}</p>
@@ -353,7 +352,7 @@ export default function CategoryPage() {
         </div>
       </section>
 
-      {/* ── BUYING GUIDE ──────────────────────────────────────────────── */}
+      
       {meta.guide.length > 0 && (
         <section className="bg-white border-b border-gray-100">
           <div className="container-custom py-8">
@@ -375,16 +374,16 @@ export default function CategoryPage() {
         </section>
       )}
 
-      {/* ── MAIN CONTENT: FILTERS + GRID ──────────────────────────────── */}
+      
       <div className="container-custom py-10">
         <div className="flex flex-col lg:flex-row gap-8">
 
-          {/* Sidebar Filters */}
+          
           <aside className="lg:w-56 flex-shrink-0">
             <div className="bg-white rounded-2xl shadow-card p-5 sticky top-24 space-y-6">
               <h3 className="font-bold text-sm text-gray-900 uppercase tracking-wide">Filters</h3>
 
-              {/* Brand */}
+              
               <div>
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Brand</p>
                 <div className="space-y-1.5">
@@ -413,7 +412,7 @@ export default function CategoryPage() {
                 </div>
               </div>
 
-              {/* Max Price */}
+              
               <div>
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Max Price</p>
                 <div className="relative">
@@ -429,7 +428,7 @@ export default function CategoryPage() {
                 </div>
               </div>
 
-              {/* In Stock */}
+              
               <div>
                 <label className="flex items-center gap-2.5 cursor-pointer">
                   <div
@@ -442,7 +441,7 @@ export default function CategoryPage() {
                 </label>
               </div>
 
-              {/* Reset */}
+              
               {(selectedBrand || inStockOnly || maxPrice) && (
                 <button
                   onClick={() => { setSelectedBrand(''); setInStockOnly(false); setMaxPrice(''); }}
@@ -454,10 +453,10 @@ export default function CategoryPage() {
             </div>
           </aside>
 
-          {/* Product Grid */}
+          
           <div className="flex-1 min-w-0">
 
-            {/* Sort & Count bar */}
+            
             <div className="flex items-center justify-between mb-6 gap-4 flex-wrap">
               <p className="text-sm text-gray-500">
                 Showing <span className="font-semibold text-gray-900">{products.length}</span> products
@@ -474,7 +473,7 @@ export default function CategoryPage() {
               </select>
             </div>
 
-            {/* Top Pick banner */}
+            
             {topPick && sort === 'popular' && !selectedBrand && (
               <Link href={`/products/${topPick.id}`}>
                 <div className="relative mb-6 rounded-2xl overflow-hidden cursor-pointer group"
@@ -507,7 +506,7 @@ export default function CategoryPage() {
               </Link>
             )}
 
-            {/* Grid */}
+            
             {products.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                 {products.map(product => (
@@ -530,7 +529,7 @@ export default function CategoryPage() {
         </div>
       </div>
 
-      {/* ── OTHER CATEGORIES ──────────────────────────────────────────── */}
+      
       <section className="bg-white border-t border-gray-100 py-12">
         <div className="container-custom">
           <h2 className="font-bold text-lg text-gray-900 mb-6">Browse Other Categories</h2>
