@@ -6,7 +6,6 @@ const WishlistContext = createContext(null);
 export function WishlistProvider({ children }) {
   const [items, setItems] = useState([]);
 
-  // Load from localStorage on mount
   useEffect(() => {
     try {
       const stored = localStorage.getItem('gt_wishlist');
@@ -14,7 +13,6 @@ export function WishlistProvider({ children }) {
     } catch {}
   }, []);
 
-  // Persist to localStorage
   useEffect(() => {
     try { localStorage.setItem('gt_wishlist', JSON.stringify(items)); } catch {}
   }, [items]);

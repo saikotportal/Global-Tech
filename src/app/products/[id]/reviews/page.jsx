@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation';
 import { getProductById } from '@/lib/products';
 import { useToast } from '@/hooks/useToast';
 
-// ── Seeded fake reviews generator ────────────────────────────────────────────
 const FIRST_NAMES = ['Alex','Sarah','James','Emily','Marcus','Priya','Daniel','Sofia','Lucas','Aisha','Tom','Nina','Ryan','Mei','Chris'];
 const LAST_INITIALS = ['M.','K.','R.','T.','L.','P.','W.','H.','B.','C.','D.','G.','N.','S.','V.'];
 const TITLES = [
@@ -57,7 +56,6 @@ function generateReviews(productId, productRating, totalReviews) {
   return Array.from({ length: count }, (_, i) => {
     const r = rand;
     const roll = r();
-    // Weight stars around product.rating
     let stars;
     if (roll < 0.05) stars = 1;
     else if (roll < 0.10) stars = 2;
@@ -119,14 +117,12 @@ export default function ReviewsPage({ params }) {
     [product.id, product.rating, product.reviews]
   );
 
-  // Star breakdown
   const breakdown = useMemo(() => {
     const counts = [0, 0, 0, 0, 0];
     allReviews.forEach(r => counts[r.stars - 1]++);
-    return counts.reverse(); // [5★, 4★, 3★, 2★, 1★]
+    return counts.reverse();
   }, [allReviews]);
 
-  // Filters
   const [filterStar, setFilterStar] = useState(0);
   const [sort, setSort] = useState('recent');
   const [page, setPage] = useState(1);
@@ -143,7 +139,6 @@ export default function ReviewsPage({ params }) {
   const paginated = filtered.slice(0, page * PER_PAGE);
   const hasMore = paginated.length < filtered.length;
 
-  // Write review form
   const [showForm, setShowForm] = useState(false);
   const [hoverStar, setHoverStar] = useState(0);
   const [formStars, setFormStars] = useState(0);
@@ -168,7 +163,7 @@ export default function ReviewsPage({ params }) {
     <div className="min-h-screen bg-gray-50">
       <div className="container-custom py-10">
 
-        {/* Breadcrumb */}
+        
         <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
           <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>
           <span>/</span>
@@ -179,7 +174,7 @@ export default function ReviewsPage({ params }) {
           <span className="text-gray-700 font-medium">Reviews</span>
         </nav>
 
-        {/* Product summary strip */}
+        
         <Link href={`/products/${product.id}`}>
           <div className="flex items-center gap-4 bg-white rounded-2xl shadow-card p-4 mb-8 hover:shadow-card-lg transition-shadow group">
             <img
@@ -203,10 +198,10 @@ export default function ReviewsPage({ params }) {
 
         <div className="flex flex-col lg:flex-row gap-8">
 
-          {/* ── LEFT: Rating overview + write review ── */}
+          
           <aside className="lg:w-72 flex-shrink-0 space-y-5">
 
-            {/* Overall rating card */}
+            
             <div className="bg-white rounded-2xl shadow-card p-6">
               <h3 className="font-bold text-gray-900 mb-4">Overall Rating</h3>
               <div className="flex flex-col items-center py-4 border-b border-gray-100 mb-5">
@@ -215,7 +210,7 @@ export default function ReviewsPage({ params }) {
                 <p className="text-xs text-gray-400 mt-2">{product.reviews.toLocaleString()} verified reviews</p>
               </div>
 
-              {/* Star breakdown bars */}
+              
               <div className="space-y-2.5">
                 {[5, 4, 3, 2, 1].map((star, i) => (
                   <button
@@ -247,7 +242,7 @@ export default function ReviewsPage({ params }) {
               )}
             </div>
 
-            {/* Write review CTA */}
+            
             {!submitted ? (
               <div className="bg-white rounded-2xl shadow-card p-6">
                 <h3 className="font-bold text-gray-900 mb-1">Share your experience</h3>
@@ -262,7 +257,7 @@ export default function ReviewsPage({ params }) {
 
                 {showForm && (
                   <div className="mt-5 space-y-4">
-                    {/* Star picker */}
+                    
                     <div>
                       <p className="text-xs font-semibold text-gray-600 mb-2">Your Rating *</p>
                       <div className="flex gap-1">
@@ -283,7 +278,7 @@ export default function ReviewsPage({ params }) {
                       )}
                     </div>
 
-                    {/* Name */}
+                    
                     <div>
                       <label className="text-xs font-semibold text-gray-600 block mb-1">Your Name</label>
                       <input
@@ -295,7 +290,7 @@ export default function ReviewsPage({ params }) {
                       />
                     </div>
 
-                    {/* Title */}
+                    
                     <div>
                       <label className="text-xs font-semibold text-gray-600 block mb-1">Review Title *</label>
                       <input
@@ -307,7 +302,7 @@ export default function ReviewsPage({ params }) {
                       />
                     </div>
 
-                    {/* Body */}
+                    
                     <div>
                       <label className="text-xs font-semibold text-gray-600 block mb-1">Your Review *</label>
                       <textarea
@@ -339,10 +334,10 @@ export default function ReviewsPage({ params }) {
             )}
           </aside>
 
-          {/* ── RIGHT: Review list ── */}
+          
           <div className="flex-1 min-w-0">
 
-            {/* Sort + filter bar */}
+            
             <div className="flex items-center justify-between mb-5 gap-4 flex-wrap">
               <p className="text-sm text-gray-500">
                 {filterStar
@@ -362,7 +357,7 @@ export default function ReviewsPage({ params }) {
               </select>
             </div>
 
-            {/* Review cards */}
+            
             {filtered.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-24 gap-3">
                 <p className="text-4xl">⭐</p>
@@ -375,7 +370,7 @@ export default function ReviewsPage({ params }) {
                   <div key={review.id} className="bg-white rounded-2xl shadow-card p-5 hover:shadow-card-lg transition-shadow">
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <div className="flex items-center gap-3">
-                        {/* Avatar */}
+                        
                         <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 text-white text-sm font-bold"
                           style={{ background: `hsl(${(review.id * 47) % 360}, 65%, 55%)` }}>
                           {review.name[0]}
@@ -388,7 +383,7 @@ export default function ReviewsPage({ params }) {
                       <StarRow filled={review.stars} size="sm" />
                     </div>
 
-                    {/* Tags */}
+                    
                     {review.tags.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 mb-2">
                         {review.tags.map(tag => (
@@ -402,7 +397,7 @@ export default function ReviewsPage({ params }) {
                     <h4 className="font-bold text-gray-900 text-sm mb-1.5">"{review.title}"</h4>
                     <p className="text-sm text-gray-600 leading-relaxed">{review.body}</p>
 
-                    {/* Helpful */}
+                    
                     <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
                       <p className="text-xs text-gray-400">{review.helpful} people found this helpful</p>
                       <button className="text-xs text-gray-400 hover:text-orange-500 transition-colors font-medium">
@@ -412,7 +407,7 @@ export default function ReviewsPage({ params }) {
                   </div>
                 ))}
 
-                {/* Load more */}
+                
                 {hasMore && (
                   <button
                     onClick={() => setPage(p => p + 1)}

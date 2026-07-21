@@ -36,7 +36,7 @@ function ProductCard({ p, index }) {
           {disc > 0 && (
             <span className="absolute top-2 right-2 text-xs font-bold px-2 py-0.5 rounded-full bg-green-500 text-white">-{disc}%</span>
           )}
-          {/* Slide-up Add to Cart overlay */}
+          
           <div className="absolute bottom-0 left-0 right-0 transition-all duration-300"
             style={{ transform: hovered ? 'translateY(0)' : 'translateY(100%)', opacity: hovered ? 1 : 0 }}>
             <button onClick={(e) => { e.preventDefault(); addItem(p); }}
@@ -61,7 +61,7 @@ function ProductCard({ p, index }) {
           <span className="font-bold text-dark-800">${p.price}</span>
           {p.originalPrice > p.price && <span className="text-xs text-gray-400 line-through">${p.originalPrice}</span>}
         </div>
-        {/* Bottom button — visible when not hovered on mobile */}
+        
         <button onClick={() => addItem(p)} disabled={!p.inStock}
           className="w-full py-2 rounded-xl text-xs font-semibold transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-white sm:hidden"
           style={{ background: 'linear-gradient(135deg,#e8517a,#f4874b)' }}>

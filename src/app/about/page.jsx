@@ -15,7 +15,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+      
       <div className="text-white py-24 px-4 text-center" style={{ background: 'linear-gradient(135deg,#e8517a,#f4874b)' }}>
         <h1 className="text-5xl font-extrabold mb-4">About GlobalTech</h1>
         <p className="text-xl text-white/80 max-w-2xl mx-auto">
@@ -23,7 +23,7 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* Stats */}
+      
       <div className="bg-white border-b">
         <div className="max-w-5xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {stats.map(({ value, label }) => (
@@ -35,7 +35,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Story */}
+      
       <div className="max-w-4xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
         <div className="prose prose-lg text-gray-600 space-y-4">
@@ -51,7 +51,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Team */}
+      
       <div className="bg-gray-50 py-16">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-800 text-center mb-10">Meet the Team</h2>
@@ -67,7 +67,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* ── Developer Spotlight ─────────────────────────────────────────── */}
+      
       <div className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-800 text-center mb-10">Built By</h2>
@@ -76,17 +76,17 @@ export default function AboutPage() {
             style={{ background: 'linear-gradient(135deg,#e8517a,#f4874b,#e8517a)' }}>
             <div className="bg-white rounded-3xl px-8 py-10 flex flex-col md:flex-row items-center gap-8">
 
-              {/* Avatar */}
+              
               <div className="relative flex-shrink-0">
                 <div className="w-28 h-28 rounded-2xl flex items-center justify-center text-white text-4xl font-black shadow-lg"
                   style={{ background: 'linear-gradient(135deg,#e8517a,#f4874b)' }}>
                   SA
                 </div>
-                {/* Online indicator */}
+                
                 <span className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 border-2 border-white rounded-full" />
               </div>
 
-              {/* Info */}
+              
               <div className="flex-1 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-white mb-3"
                   style={{ background: 'linear-gradient(135deg,#e8517a,#f4874b)' }}>
@@ -109,7 +109,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Right quote */}
+              
               <div className="hidden md:flex flex-col items-end flex-shrink-0 max-w-[200px]">
                 <svg className="w-8 h-8 mb-2 opacity-20" fill="currentColor" style={{ color: '#e8517a' }} viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
@@ -123,9 +123,9 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-      {/* ──────────────────────────────────────────────────────────────────── */}
+      
 
-      {/* Values */}
+      
       <div className="bg-gray-50 py-16">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-800 text-center mb-10">Our Values</h2>

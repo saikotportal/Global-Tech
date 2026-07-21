@@ -98,7 +98,7 @@ export default function SupportPage() {
   return (
     <div className="min-h-screen bg-gray-50">
 
-      {/* Hero */}
+      
       <div className="text-white py-16 px-4 text-center" style={{ background: 'linear-gradient(135deg, #e8517a, #f4874b)' }}>
         <h1 className="text-4xl font-bold mb-3">Support Hub</h1>
         <p className="text-white/80 mb-8 text-lg">How can we help you today?</p>
@@ -116,7 +116,7 @@ export default function SupportPage() {
 
       <div className="max-w-6xl mx-auto px-4 py-12">
 
-        {/* Quick Links */}
+        
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
           {QUICK_LINKS.map(({ icon, label, href }) => (
             <Link
@@ -130,7 +130,7 @@ export default function SupportPage() {
           ))}
         </div>
 
-        {/* Contact Channels */}
+        
         <h2 className="text-xl font-bold text-gray-900 mb-4">Contact Us</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {CONTACT_CHANNELS.map(({ icon, label, value, sub, action }) => (
@@ -147,9 +147,9 @@ export default function SupportPage() {
           ))}
         </div>
 
-        {/* FAQ */}
+        
         <div className="flex flex-col lg:flex-row gap-8 mb-12">
-          {/* Category filter */}
+          
           <div className="lg:w-56 flex-shrink-0">
             <h2 className="text-xl font-bold text-gray-900 mb-4">FAQ</h2>
             <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0">
@@ -173,7 +173,7 @@ export default function SupportPage() {
             </div>
           </div>
 
-          {/* FAQ Items */}
+          
           <div className="flex-1">
             {filteredFAQs.length === 0 ? (
               <div className="text-center py-16 text-gray-400">
@@ -198,7 +198,7 @@ export default function SupportPage() {
           </div>
         </div>
 
-        {/* Contact Form */}
+        
         <div id="ticket" className="bg-white rounded-2xl shadow-sm p-8 max-w-2xl mx-auto">
           {sent ? (
             <div className="text-center py-10">

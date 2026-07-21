@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { PRODUCTS, CATEGORIES } from '@/lib/products';
 import { COUPONS } from '@/lib/coupons';
 
-// ── Mock data ─────────────────────────────────────────────────────────────────
 const MOCK_ORDERS = [
   { id: 'GT-10041', customer: 'Sarah Johnson',  email: 'sarah@email.com',  total: 2499, status: 'delivered',   date: '2026-05-30', items: 1, product: 'MacBook Pro 16" M4 Max' },
   { id: 'GT-10040', customer: 'James Liu',       email: 'james@email.com',   total: 1799, status: 'shipped',     date: '2026-05-30', items: 2, product: 'LG C4 77" OLED 4K TV' },
@@ -93,7 +92,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="p-4 md:p-6 space-y-6">
-      {/* Header */}
+      
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold text-gray-900">Dashboard</h1>
@@ -113,7 +112,7 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* KPI cards */}
+      
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard icon="💰" label="Revenue (7d)"   value={`$${weekRevenue.toLocaleString()}`}  sub="vs $128k last week"   trend={15}  color="bg-orange-50" />
         <StatCard icon="🛒" label="Orders (7d)"    value="204"                                  sub="vs 176 last week"     trend={16}  color="bg-blue-50" />
@@ -121,9 +120,9 @@ export default function AdminDashboard() {
         <StatCard icon="📦" label="Products"       value={PRODUCTS.length}                      sub={`${outOfStock.length} out of stock`} trend={null} color="bg-green-50" />
       </div>
 
-      {/* Charts row */}
+      
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* Revenue bar chart */}
+        
         <div className="lg:col-span-2 bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
             <div>
@@ -143,7 +142,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Category sales */}
+        
         <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
           <h2 className="font-semibold text-gray-900 mb-1">Top Categories</h2>
           <p className="text-xs text-gray-400 mb-4">By revenue</p>
@@ -177,9 +176,9 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* Bottom row */}
+      
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* Recent orders */}
+        
         <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
             <h2 className="font-semibold text-gray-900">Recent Orders</h2>
@@ -211,9 +210,9 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Alerts column */}
+        
         <div className="space-y-4">
-          {/* Low stock */}
+          
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
             <div className="flex items-center justify-between mb-3">
               <h2 className="font-semibold text-gray-900">⚠️ Low Stock</h2>
@@ -236,7 +235,7 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          {/* Quick stats */}
+          
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
             <h2 className="font-semibold text-gray-900 mb-3">Quick Stats</h2>
             <div className="space-y-2.5">

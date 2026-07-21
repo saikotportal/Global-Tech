@@ -13,7 +13,7 @@ export default function Newsletter() {
 
   return (
     <section className="py-16 relative overflow-hidden" style={{ background: 'linear-gradient(135deg,#e8517a 0%,#f4874b 50%,#f5c518 100%)' }}>
-      {/* Pattern overlay */}
+      
       <div className="absolute inset-0 opacity-10" style={{
         backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
         backgroundSize: '24px 24px',

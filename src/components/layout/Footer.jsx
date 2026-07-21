@@ -43,9 +43,8 @@ const SOCIALS = [
   { name: 'Facebook',  icon: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' },
 ];
 
-// ── Secret Admin Gate ──────────────────────────────────────────────────────────
 function AdminGate({ onClose }) {
-  const [phase, setPhase] = useState('loading'); // loading | password | error
+  const [phase, setPhase] = useState('loading');
   const [pw, setPw] = useState('');
   const [shake, setShake] = useState(false);
   const router = useRouter();
@@ -124,7 +123,6 @@ export default function Footer() {
   const [inquiryMsg, setInquiryMsg] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  // Secret triple-click state
   const [showGate, setShowGate] = useState(false);
   const clickCountRef = useRef(0);
   const clickTimerRef = useRef(null);
@@ -152,11 +150,11 @@ export default function Footer() {
       {showGate && <AdminGate onClose={() => setShowGate(false)} />}
 
       <footer className="bg-dark-800 text-gray-400 mt-16">
-        {/* Main footer */}
+        
         <div className="container-custom py-16">
           <div className="grid grid-cols-2 md:grid-cols-7 gap-8">
 
-            {/* Brand col */}
+            
             <div className="col-span-2">
               <div className="mb-4 cursor-pointer select-none" onClick={handleLogoClick} title="">
                 <img src="/logo.png" alt="GlobalTech" className="h-10 w-auto brightness-0 invert" />
@@ -165,7 +163,7 @@ export default function Footer() {
                 Your one-stop destination for the latest technology. Shop the best phones, laptops, TVs, and more at unbeatable prices.
               </p>
 
-              {/* Call Us */}
+              
               <a href="tel:+18004562789" className="flex items-center gap-3 group mb-3">
                 <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{ background: 'linear-gradient(135deg,#e8517a,#f4874b)' }}>
@@ -179,7 +177,7 @@ export default function Footer() {
                 </div>
               </a>
 
-              {/* Find Store CTA */}
+              
               <Link href="/stores"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white mb-5 transition-opacity hover:opacity-90"
                 style={{ background: 'linear-gradient(135deg, #e8517a, #f4874b)' }}>
@@ -190,7 +188,7 @@ export default function Footer() {
                 Find a Store Near You
               </Link>
 
-              {/* Socials */}
+              
               <div className="flex gap-3">
                 {SOCIALS.map((s) => (
                   <a key={s.name} href="#" aria-label={s.name}
@@ -203,7 +201,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Link columns */}
+            
             {Object.entries(FOOTER_LINKS).map(([title, links]) => (
               <div key={title}>
                 <h4 className="text-white font-semibold mb-4">{title}</h4>
@@ -219,7 +217,7 @@ export default function Footer() {
               </div>
             ))}
 
-            {/* Inquiry Box */}
+            
             <div className="col-span-2">
               <h4 className="text-white font-semibold mb-4">Send an Inquiry</h4>
               {submitted ? (
@@ -268,7 +266,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Payment & trust bar */}
+        
         <div className="border-t border-dark-700">
           <div className="container-custom py-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs">© {new Date().getFullYear()} GlobalTech Inc. All rights reserved. · Developed by <span style={{ color: "#f4874b", fontWeight: 700 }}>Saikot Islam Abir</span> |{' '}

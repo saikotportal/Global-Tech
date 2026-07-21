@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/hooks/useAuth';
 
-// ── Featured Category data ──────────────────────────────────────────────────
 const FEATURED_CATEGORIES = [
   {
     label: 'Desktop',
@@ -422,13 +421,13 @@ export default function Navbar() {
 
       <div className="sticky top-0 z-50">
 
-        {/* ── 1. TOP BAR ── */}
+        
         <div
           className="bg-gray-900 text-white text-xs overflow-hidden transition-all duration-300 ease-in-out"
           style={{ maxHeight: topBarVisible ? '34px' : '0px', opacity: topBarVisible ? 1 : 0 }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[34px] flex items-center justify-between">
-            {/* Left: email + socials */}
+            
             <div className="flex items-center gap-3">
               <a href="mailto:support@globaltech.com"
                 className="hidden sm:flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors">
@@ -444,7 +443,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Center: rotating announcement */}
+            
             <div className="relative overflow-hidden flex-1 mx-4 h-[34px] flex items-center justify-center">
               {ANNOUNCEMENT_MESSAGES.map((msg, i) => (
                 <span
@@ -461,7 +460,7 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Right: currency + language */}
+            
             <div className="hidden md:flex items-center gap-2 flex-shrink-0">
               <div className="relative" ref={currencyRef}>
                 <button
@@ -518,19 +517,19 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* ── 2. MAIN HEADER CARD ── */}
+        
         <header className={`navbar-card transition-all duration-300 ${scrolled ? 'navbar-card-scrolled' : ''}`}>
 
-          {/* ── 2a. LOGO + SEARCH + PHONE + CART ROW ── */}
+          
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-5 py-3.5">
 
-              {/* Logo */}
+              
               <Link href="/" className="flex-shrink-0 flex items-center gap-2">
                 <img src="/logo.png" alt="GlobalTech" className="h-9 w-auto" />
               </Link>
 
-              {/* Search bar — flex grow */}
+              
               <div className="flex-1 max-w-xl hidden md:block">
                 <div className="nav-search-bar flex">
                   <input
@@ -552,7 +551,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Phone badge */}
+              
               <div className="hidden lg:flex phone-badge flex-shrink-0">
                 <div className="phone-icon-wrap">
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -565,16 +564,16 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Cart area */}
+              
               <div className="flex items-center gap-2 ml-auto flex-shrink-0">
-                {/* Wishlist icon */}
+                
                 <Link href="/account?tab=wishlist" className="hidden md:flex flex-col items-center text-gray-500 hover:text-red-500 transition-colors p-1.5">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                   </svg>
                 </Link>
 
-                {/* Account */}
+                
                 {user ? (
                   <div className="hidden md:block relative" ref={accountRef}>
                     <button onClick={() => setAccountOpen(!accountOpen)}
@@ -607,7 +606,7 @@ export default function Navbar() {
                   </Link>
                 )}
 
-                {/* Cart pill + GO button */}
+                
                 <div className="hidden md:flex items-center gap-2">
                   <button onClick={openCart} className="cart-pill">
                     <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -629,7 +628,7 @@ export default function Navbar() {
                   <button onClick={openCart} className="cart-go-btn">GO</button>
                 </div>
 
-                {/* Mobile toggle */}
+                
                 <button className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100" onClick={() => setMobileOpen(!mobileOpen)}>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     {mobileOpen
@@ -640,10 +639,10 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* ── 2b. NAV ROW ── */}
+            
             <nav className="hidden md:flex items-center border-t border-gray-100">
 
-              {/* Featured Category */}
+              
               <div className="relative flex-shrink-0" ref={categoryRef}>
                 <button
                   onClick={() => { setCategoryOpen(!categoryOpen); setHoveredCat(null); }}
@@ -710,7 +709,7 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* Nav links */}
+              
               <div className="flex items-center" ref={navDropRef}>
                 {NAV_LINKS.map((link) => (
                   <div key={link.label} className="relative"
@@ -743,7 +742,7 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* Flash deals — right */}
+              
               <Link href="/products?tag=flash-deals"
                 className="ml-auto px-4 py-2.5 text-sm font-bold text-red-500 hover:bg-red-50 transition-colors whitespace-nowrap flex items-center gap-1.5 flex-shrink-0">
                 ⚡ Flash Deals
@@ -753,7 +752,7 @@ export default function Navbar() {
         </header>
       </div>
 
-      {/* ── MOBILE MENU ── */}
+      
       {mobileOpen && (
         <div className="fixed inset-0 z-40 bg-white pt-16 overflow-y-auto md:hidden">
           <div className="p-4">

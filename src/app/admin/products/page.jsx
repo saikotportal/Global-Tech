@@ -173,7 +173,7 @@ export default function AdminProducts() {
   const [catFilter, setCatFilter] = useState('');
   const [stockFilter, setStockFilter] = useState('');
   const [sort,     setSort]       = useState('id-desc');
-  const [modal,    setModal]      = useState(null); // null | 'add' | product-obj
+  const [modal,    setModal]      = useState(null);
   const [delId,    setDelId]      = useState(null);
   const [page,     setPage]       = useState(1);
   const PER_PAGE = 12;
@@ -224,7 +224,7 @@ export default function AdminProducts() {
 
   return (
     <div className="p-4 md:p-6 space-y-5">
-      {/* Header */}
+      
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-gray-900">Products</h1>
@@ -238,7 +238,7 @@ export default function AdminProducts() {
         </button>
       </div>
 
-      {/* Filters */}
+      
       <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
         <div className="flex flex-wrap gap-3">
           <input className={`${inp} flex-1 min-w-48`} placeholder="🔍  Search products or brand..."
@@ -264,7 +264,7 @@ export default function AdminProducts() {
         </div>
       </div>
 
-      {/* Table */}
+      
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -365,7 +365,7 @@ export default function AdminProducts() {
           </table>
         </div>
 
-        {/* Pagination */}
+        
         {pageCount > 1 && (
           <div className="flex items-center justify-between px-4 py-3 border-t border-gray-100">
             <p className="text-xs text-gray-500">
@@ -395,7 +395,7 @@ export default function AdminProducts() {
         )}
       </div>
 
-      {/* Add/Edit modal */}
+      
       {modal && (
         <Modal
           title={modal === 'add' ? 'Add New Product' : `Edit: ${modal.name}`}
@@ -409,7 +409,7 @@ export default function AdminProducts() {
         </Modal>
       )}
 
-      {/* Delete confirm */}
+      
       {delId && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50" onClick={() => setDelId(null)} />

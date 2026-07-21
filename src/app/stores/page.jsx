@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const STORES = [
-  // Bangladesh
   {
     id: 1,
     country: 'Bangladesh',
@@ -95,7 +94,6 @@ const STORES = [
     mapUrl: 'https://maps.google.com/?q=Kandirpar+Cumilla',
     featured: false,
   },
-  // International
   {
     id: 7,
     country: 'United States',
@@ -215,10 +213,10 @@ export default function StoresPage() {
   return (
     <main className="min-h-screen bg-gray-50">
 
-      {/* Hero */}
+      
       <section className="relative overflow-hidden py-20 text-white"
         style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%)' }}>
-        {/* Decorative blobs */}
+        
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full opacity-20"
             style={{ background: 'radial-gradient(circle, #e8517a, transparent)' }} />
@@ -237,7 +235,7 @@ export default function StoresPage() {
           <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
             Visit us in person for hands-on demos, expert advice, repairs, and more. Our stores are ready to help you find your next tech.
           </p>
-          {/* Search */}
+          
           <div className="max-w-md mx-auto">
             <div className="flex bg-white rounded-2xl overflow-hidden shadow-2xl">
               <input
@@ -256,7 +254,7 @@ export default function StoresPage() {
         </div>
       </section>
 
-      {/* Stats row */}
+      
       <section className="bg-white border-b border-gray-100">
         <div className="container-custom py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -276,7 +274,7 @@ export default function StoresPage() {
         </div>
       </section>
 
-      {/* Filter tabs */}
+      
       <section className="container-custom pt-10 pb-2">
         <div className="flex flex-wrap gap-2">
           {ALL_COUNTRIES.map(country => (
@@ -294,7 +292,7 @@ export default function StoresPage() {
         </div>
       </section>
 
-      {/* BD Stores */}
+      
       {bdStores.length > 0 && (
         <section className="container-custom py-8">
           <div className="flex items-center gap-3 mb-6">
@@ -310,7 +308,7 @@ export default function StoresPage() {
         </section>
       )}
 
-      {/* International Stores */}
+      
       {intlStores.length > 0 && (
         <section className="container-custom py-8">
           <div className="flex items-center gap-3 mb-6">
@@ -339,7 +337,7 @@ export default function StoresPage() {
         </div>
       )}
 
-      {/* CTA */}
+      
       <section className="container-custom py-12">
         <div className="rounded-3xl p-10 text-center text-white relative overflow-hidden"
           style={{ background: 'linear-gradient(135deg, #1a1a2e, #2d1b4e)' }}>
@@ -372,7 +370,7 @@ function StoreCard({ store }) {
     <div className={`bg-white rounded-2xl border transition-all duration-200 overflow-hidden ${
       store.featured ? 'border-orange-200 shadow-lg' : 'border-gray-100 shadow-sm hover:shadow-md'
     }`}>
-      {/* Card header */}
+      
       <div className="p-5">
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex items-center gap-2">
@@ -390,7 +388,7 @@ function StoreCard({ store }) {
           )}
         </div>
 
-        {/* Address */}
+        
         <div className="flex items-start gap-2 mb-2">
           <svg className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -399,7 +397,7 @@ function StoreCard({ store }) {
           <p className="text-xs text-gray-600 leading-relaxed">{store.address}</p>
         </div>
 
-        {/* Hours */}
+        
         <div className="flex items-center gap-2 mb-3">
           <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -407,7 +405,7 @@ function StoreCard({ store }) {
           <p className="text-xs text-gray-600">{store.hours}</p>
         </div>
 
-        {/* Services chips */}
+        
         <div className="flex flex-wrap gap-1.5 mb-4">
           {store.services.map(svc => {
             const style = SERVICE_ICONS[svc];
@@ -422,7 +420,7 @@ function StoreCard({ store }) {
           })}
         </div>
 
-        {/* Expand toggle */}
+        
         <button onClick={() => setExpanded(!expanded)}
           className="text-xs text-orange-500 font-semibold hover:text-orange-600 transition-colors flex items-center gap-1">
           {expanded ? 'Show less' : 'Show contact details'}
@@ -431,7 +429,7 @@ function StoreCard({ store }) {
           </svg>
         </button>
 
-        {/* Expanded contact */}
+        
         {expanded && (
           <div className="mt-3 pt-3 border-t border-gray-100 space-y-1.5">
             <a href={`tel:${store.phone}`} className="flex items-center gap-2 text-xs text-gray-600 hover:text-orange-500 transition-colors">
@@ -450,7 +448,7 @@ function StoreCard({ store }) {
         )}
       </div>
 
-      {/* Card footer */}
+      
       <div className="px-5 pb-5 flex gap-2">
         <a href={store.mapUrl} target="_blank" rel="noopener noreferrer"
           className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl border-2 border-gray-200 text-xs font-semibold text-gray-600 hover:border-orange-400 hover:text-orange-500 transition-colors">

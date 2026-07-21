@@ -19,7 +19,6 @@ const TIMEZONES = [
 ];
 
 const DEFAULT_SETTINGS = {
-  // Store info
   storeName:      'GlobalTech',
   storeEmail:     'hello@globaltech.store',
   storePhone:     '+1 (800) 555-0100',
@@ -29,20 +28,17 @@ const DEFAULT_SETTINGS = {
   storeLogo:      '',
   storeFavicon:   '',
 
-  // Currency
   currency:       'USD',
-  currencyPos:    'before', // 'before' | 'after'
+  currencyPos:    'before',
   thousandsSep:   true,
   decimalPlaces:  2,
 
-  // Announcement bar
   announcementEnabled: true,
   announcementText:    '🚀 Free shipping on orders over $99 · Use code WELCOME20 for 20% off your first order',
   announcementColor:   '#e8517a',
   announcementTextColor: '#ffffff',
   announcementCloseable: true,
 
-  // Shipping
   freeShippingThreshold: 99,
   standardShippingCost:  9.99,
   expressShippingCost:   19.99,
@@ -51,16 +47,13 @@ const DEFAULT_SETTINGS = {
   shippingEstimateStd:   '3–5 business days',
   shippingEstimateExp:   '1–2 business days',
 
-  // Tax
   taxEnabled:     true,
   taxRate:        8.875,
   taxIncluded:    false,
 
-  // SEO
   metaTitle:      'GlobalTech — Premium Electronics Store',
   metaDescription:'Shop the latest tech products from top brands. Free shipping over $99.',
 
-  // Social
   socialInstagram: 'globaltech',
   socialTwitter:   'globaltechstore',
   socialFacebook:  'globaltechstore',
@@ -129,7 +122,6 @@ export default function SettingsPage() {
   const set = (key, val) => setSettings(s => ({ ...s, [key]: val }));
 
   const handleSave = () => {
-    // In a real app: POST /api/admin/settings
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);
   };
@@ -146,7 +138,7 @@ export default function SettingsPage() {
 
   return (
     <div className="p-4 md:p-6 space-y-6">
-      {/* Header */}
+      
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold text-gray-900">Settings</h1>
@@ -161,7 +153,7 @@ export default function SettingsPage() {
         </button>
       </div>
 
-      {/* Tabs */}
+      
       <div className="flex gap-1 bg-gray-100 rounded-xl p-1 overflow-x-auto">
         {TABS.map(t => (
           <button
@@ -178,7 +170,7 @@ export default function SettingsPage() {
         ))}
       </div>
 
-      {/* Store Info */}
+      
       {activeTab === 'store' && (
         <>
           <Section title="Store Information" description="Basic details about your store">
@@ -232,7 +224,7 @@ export default function SettingsPage() {
         </>
       )}
 
-      {/* Currency */}
+      
       {activeTab === 'currency' && (
         <Section title="Currency Configuration" description="Set the default currency for your store">
           <Field label="Currency" hint="The primary currency for all prices">
@@ -295,7 +287,7 @@ export default function SettingsPage() {
             </div>
           </Field>
 
-          {/* Preview */}
+          
           <div className="bg-gray-50 rounded-xl p-4 mt-2">
             <p className="text-xs text-gray-500 mb-1">Preview</p>
             <p className="text-2xl font-bold text-gray-900">
@@ -309,7 +301,7 @@ export default function SettingsPage() {
         </Section>
       )}
 
-      {/* Announcement Bar */}
+      
       {activeTab === 'announcement' && (
         <Section title="Announcement Bar" description="A banner shown at the top of every page">
           <Field label="Enable Bar">
@@ -357,7 +349,7 @@ export default function SettingsPage() {
                 <Toggle value={settings.announcementCloseable} onChange={v => set('announcementCloseable', v)} label="Show a close button" />
               </Field>
 
-              {/* Live Preview */}
+              
               <Field label="Preview">
                 <div
                   className="rounded-xl px-4 py-3 text-sm font-medium text-center relative"
@@ -374,7 +366,7 @@ export default function SettingsPage() {
         </Section>
       )}
 
-      {/* Shipping */}
+      
       {activeTab === 'shipping' && (
         <>
           <Section title="Free Shipping" description="Set the threshold for free shipping">
@@ -409,7 +401,7 @@ export default function SettingsPage() {
             </Field>
           </Section>
 
-          {/* Summary */}
+          
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
             <h3 className="font-semibold text-gray-900 mb-3">Shipping Summary</h3>
             <div className="space-y-2.5">
@@ -430,7 +422,7 @@ export default function SettingsPage() {
         </>
       )}
 
-      {/* SEO & Social */}
+      
       {activeTab === 'seo' && (
         <>
           <Section title="SEO" description="Optimize your store for search engines">
@@ -449,7 +441,7 @@ export default function SettingsPage() {
               <p className="text-xs text-gray-400 mt-1">{settings.metaDescription.length} / 160 characters</p>
             </Field>
 
-            {/* Search preview */}
+            
             <Field label="Search Preview">
               <div className="bg-gray-50 rounded-xl p-4">
                 <p className="text-blue-600 text-sm font-medium truncate">{settings.metaTitle || 'Page Title'}</p>
@@ -474,7 +466,7 @@ export default function SettingsPage() {
         </>
       )}
 
-      {/* Save footer */}
+      
       <div className="flex justify-end pt-2">
         <button
           onClick={handleSave}

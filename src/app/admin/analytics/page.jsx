@@ -2,7 +2,6 @@
 import { useState, useMemo } from 'react';
 import { PRODUCTS, CATEGORIES } from '@/lib/products';
 
-// ── Mock analytics data ──────────────────────────────────────────────────────
 
 const REVENUE_30D = Array.from({ length: 30 }, (_, i) => {
   const d = new Date('2026-05-01');
@@ -63,7 +62,6 @@ const FUNNEL = [
 
 const PERIODS = { '7d': REVENUE_7D, '30d': REVENUE_30D, '90d': REVENUE_90D };
 
-// ── Chart components ─────────────────────────────────────────────────────────
 
 function LineChart({ data, field, color, height = 120 }) {
   const vals = data.map(d => d[field]);
@@ -119,7 +117,6 @@ function BarChart({ data, height = 100 }) {
   );
 }
 
-// ── Page ─────────────────────────────────────────────────────────────────────
 
 export default function AnalyticsPage() {
   const [period, setPeriod] = useState('30d');
@@ -144,7 +141,7 @@ export default function AnalyticsPage() {
 
   return (
     <div className="p-4 md:p-6 space-y-6">
-      {/* Header */}
+      
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold text-gray-900">Analytics</h1>
@@ -164,7 +161,7 @@ export default function AnalyticsPage() {
         </div>
       </div>
 
-      {/* KPI cards */}
+      
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {[
           { icon: '💰', label: 'Revenue',     value: `$${(totalRevenue/1000).toFixed(0)}k`,   trend: +15, color: 'bg-pink-50'   },
@@ -186,7 +183,7 @@ export default function AnalyticsPage() {
         ))}
       </div>
 
-      {/* Main chart */}
+      
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <div>
@@ -211,9 +208,9 @@ export default function AnalyticsPage() {
         <LineChart data={data} field={metric} color={activeMetric.color} height={130} />
       </div>
 
-      {/* Mid row: Top Products + Category Bar */}
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {/* Top Products */}
+        
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div className="px-5 py-4 border-b border-gray-100">
             <h2 className="font-semibold text-gray-900">Top Products by Revenue</h2>
@@ -247,7 +244,7 @@ export default function AnalyticsPage() {
           </div>
         </div>
 
-        {/* Category breakdown */}
+        
         <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
           <h2 className="font-semibold text-gray-900 mb-1">Revenue by Category</h2>
           <p className="text-xs text-gray-400 mb-4">Last {period}</p>
@@ -271,7 +268,7 @@ export default function AnalyticsPage() {
         </div>
       </div>
 
-      {/* Conversion Funnel */}
+      
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
         <h2 className="font-semibold text-gray-900 mb-1">Conversion Funnel</h2>
         <p className="text-xs text-gray-400 mb-5">Last {period} — visitors to purchases</p>
@@ -310,7 +307,7 @@ export default function AnalyticsPage() {
           ))}
         </div>
 
-        {/* Summary */}
+        
         <div className="mt-5 pt-4 border-t border-gray-100 grid grid-cols-3 gap-4">
           <div className="text-center">
             <p className="text-sm font-bold text-gray-900">3.4%</p>

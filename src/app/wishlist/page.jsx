@@ -20,7 +20,7 @@ function WishlistCard({ product, onRemove }) {
 
   return (
     <div className="bg-white rounded-2xl shadow-card border border-gray-100 overflow-hidden group flex flex-col sm:flex-row gap-0 animate-fade-in">
-      {/* Image */}
+      
       <Link href={`/products/${product.id}`} className="sm:w-48 flex-shrink-0">
         <div className="h-48 sm:h-full bg-gray-50 relative overflow-hidden">
           <img
@@ -42,7 +42,7 @@ function WishlistCard({ product, onRemove }) {
         </div>
       </Link>
 
-      {/* Details */}
+      
       <div className="flex-1 p-5 flex flex-col">
         <div className="flex items-start justify-between gap-3 mb-1">
           <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">{product.brand}</p>
@@ -63,7 +63,7 @@ function WishlistCard({ product, onRemove }) {
 
         <p className="text-xs text-gray-400 line-clamp-2 mb-3 flex-1">{product.description}</p>
 
-        {/* Rating */}
+        
         <div className="flex items-center gap-1.5 mb-4">
           <div className="flex text-yellow-400 text-xs">
             {[1,2,3,4,5].map((s) => (
@@ -114,14 +114,14 @@ export default function WishlistPage() {
   return (
     <div className="container-custom py-10 sm:py-14">
 
-      {/* Breadcrumb */}
+      
       <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8">
         <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>
         <span>/</span>
         <span className="text-dark-800 font-medium">Wishlist</span>
       </nav>
 
-      {/* Header */}
+      
       <div className="flex items-center justify-between gap-4 flex-wrap mb-8">
         <div>
           <h1 className="font-display text-3xl font-bold text-dark-800">My Wishlist</h1>
@@ -148,7 +148,7 @@ export default function WishlistPage() {
         )}
       </div>
 
-      {/* Empty state */}
+      
       {items.length === 0 && (
         <div className="bg-white rounded-3xl shadow-card border border-gray-100 py-24 text-center">
           <div className="text-6xl mb-5">🤍</div>
@@ -166,7 +166,7 @@ export default function WishlistPage() {
         </div>
       )}
 
-      {/* Wishlist grid */}
+      
       {items.length > 0 && (
         <div className={`space-y-4 transition-opacity duration-300 ${clearing ? 'opacity-0' : 'opacity-100'}`}>
           {items.map((product) => (

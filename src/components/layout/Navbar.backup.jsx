@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/hooks/useAuth';
 
-// ── Featured Category data ──────────────────────────────────────────────────
 const FEATURED_CATEGORIES = [
   {
     label: 'Desktop',
@@ -119,7 +118,6 @@ const FEATURED_CATEGORIES = [
   },
 ];
 
-// ── Top nav links (right side of Featured Category button) ──────────────────
 const NAV_LINKS = [
   { label: 'Home',       href: '/' },
   {
@@ -187,7 +185,6 @@ export default function Navbar() {
   const { totalItems, openCart } = useCart();
   const { user, logout }         = useAuth();
 
-  // Scroll hide/show top bar
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
@@ -205,13 +202,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Rotate announcements
   useEffect(() => {
     const t = setInterval(() => setMsgIndex(i => (i + 1) % ANNOUNCEMENT_MESSAGES.length), 4000);
     return () => clearInterval(t);
   }, []);
 
-  // Close dropdowns on outside click
   useEffect(() => {
     function handleClickOutside(e) {
       if (accountRef.current  && !accountRef.current.contains(e.target))  setAccountOpen(false);
@@ -231,7 +226,7 @@ export default function Navbar() {
     <>
       <div className="sticky top-0 z-50">
 
-        {/* ── 1. DARK TOP BAR ── */}
+        
         <div
           className="bg-gray-900 text-white text-xs overflow-hidden transition-all duration-300 ease-in-out"
           style={{ maxHeight: topBarVisible ? '36px' : '0px', opacity: topBarVisible ? 1 : 0 }}
@@ -252,10 +247,10 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* ── 2. WHITE MAIN HEADER ── */}
+        
         <header className={`bg-white transition-all duration-300 ${scrolled ? 'shadow-lg' : 'shadow-sm'}`}>
 
-          {/* ── 2a. INFO ROW ── */}
+          
           <div className="border-b border-gray-100">
             <div className="container-custom flex items-center h-9 gap-4 text-xs text-gray-500">
               <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
@@ -275,7 +270,7 @@ export default function Navbar() {
               </div>
               <div className="flex-1" />
               <div className="hidden md:flex items-center gap-3 flex-shrink-0">
-                {/* Currency */}
+                
                 <div className="relative" ref={currencyRef}>
                   <button
                     onClick={() => { setCurrencyOpen(!currencyOpen); setLangOpen(false); }}
@@ -299,7 +294,7 @@ export default function Navbar() {
                   )}
                 </div>
                 <span className="text-gray-200">|</span>
-                {/* Language */}
+                
                 <div className="relative" ref={langRef}>
                   <button
                     onClick={() => { setLangOpen(!langOpen); setCurrencyOpen(false); }}
@@ -332,7 +327,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* ── 2b. LOGO + SEARCH + ACTIONS ROW ── */}
+          
           <div className="container-custom">
             <div className="flex items-center h-16 gap-4">
               <Link href="/" className="flex-shrink-0">
@@ -358,14 +353,14 @@ export default function Navbar() {
                 </form>
               </div>
               <div className="flex items-center gap-3 ml-auto">
-                {/* Wishlist */}
+                
                 <Link href="/account?tab=wishlist" className="hidden md:flex flex-col items-center text-gray-600 hover:text-orange-500 transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                   </svg>
                   <span className="text-xs mt-0.5">Wishlist</span>
                 </Link>
-                {/* Account */}
+                
                 {user ? (
                   <div className="hidden md:block relative" ref={accountRef}>
                     <button onClick={() => setAccountOpen(!accountOpen)}
@@ -399,7 +394,7 @@ export default function Navbar() {
                     <span className="text-xs mt-0.5">Account</span>
                   </Link>
                 )}
-                {/* Cart */}
+                
                 <button onClick={openCart} className="relative flex flex-col items-center text-gray-600 hover:text-orange-500 transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -412,7 +407,7 @@ export default function Navbar() {
                     </span>
                   )}
                 </button>
-                {/* Mobile menu toggle */}
+                
                 <button className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100" onClick={() => setMobileOpen(!mobileOpen)}>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     {mobileOpen
@@ -423,12 +418,12 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* ── 2c. NAV ROW — Featured Category + nav links ── */}
+            
             <nav className="hidden md:flex items-center border-t border-gray-100">
 
-              {/* ── FEATURED CATEGORY BUTTON + DROPDOWN ── */}
+              
               <div className="relative flex-shrink-0" ref={categoryRef}>
-                {/* Button */}
+                
                 <button
                   onClick={() => { setCategoryOpen(!categoryOpen); setHoveredCat(null); }}
                   className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-white flex-shrink-0 select-none"
@@ -447,12 +442,12 @@ export default function Navbar() {
                   </svg>
                 </button>
 
-                {/* ── DROPDOWN PANEL ── */}
+                
                 {categoryOpen && (
                   <div className="absolute top-full left-0 z-50 flex shadow-2xl border border-gray-100 rounded-b-xl overflow-hidden"
                     style={{ minWidth: '200px' }}>
 
-                    {/* Left: category list */}
+                    
                     <ul className="bg-white w-52 py-2 flex-shrink-0">
                       {FEATURED_CATEGORIES.map((cat) => (
                         <li key={cat.label}>
@@ -477,7 +472,7 @@ export default function Navbar() {
                       ))}
                     </ul>
 
-                    {/* Right: sub-menu (appears on hover) */}
+                    
                     {hoveredCat && (() => {
                       const active = FEATURED_CATEGORIES.find(c => c.label === hoveredCat);
                       return active?.sub ? (
@@ -503,7 +498,7 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* ── RIGHT NAV LINKS with dropdowns ── */}
+              
               <div className="flex items-center" ref={navDropRef}>
                 {NAV_LINKS.map((link) => (
                   <div key={link.label} className="relative"
@@ -521,7 +516,7 @@ export default function Navbar() {
                         </svg>
                       )}
                     </Link>
-                    {/* Sub dropdown on hover */}
+                    
                     {link.sub && hoveredNav === link.label && (
                       <div className="absolute top-full left-0 z-50 bg-white border border-gray-100 rounded-xl shadow-xl py-2 min-w-max">
                         {link.sub.map((item) => (
@@ -539,7 +534,7 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* Flash Deals — pushed to right */}
+              
               <Link href="/products?tag=flash-deals"
                 className="ml-auto px-4 py-3 text-sm font-semibold text-orange-500 hover:bg-orange-50 transition-colors whitespace-nowrap flex items-center gap-1 flex-shrink-0">
                 ⚡ Flash Deals
@@ -549,7 +544,7 @@ export default function Navbar() {
         </header>
       </div>
 
-      {/* ── MOBILE MENU ── */}
+      
       {mobileOpen && (
         <div className="fixed inset-0 z-40 bg-white pt-16 overflow-y-auto md:hidden animate-fade-in">
           <div className="p-4">

@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-// ─── Fake tracking database ───────────────────────────────────────────────────
 const FAKE_ORDERS = {
   'GT-2024-881234': {
     status: 'delivered',
@@ -117,7 +116,6 @@ const STEP_ICONS = {
   placed:     '🛒',
 };
 
-// ─── Scanning animation component ────────────────────────────────────────────
 function ScanningLoader({ query }) {
   const [dots, setDots] = useState('');
   const [phase, setPhase] = useState(0);
@@ -137,7 +135,7 @@ function ScanningLoader({ query }) {
 
   return (
     <div className="flex flex-col items-center justify-center py-20 gap-8">
-      {/* Radar rings */}
+      
       <div className="relative w-40 h-40 flex items-center justify-center">
         {[0, 1, 2, 3].map((i) => (
           <span
@@ -151,7 +149,7 @@ function ScanningLoader({ query }) {
             }}
           />
         ))}
-        {/* Rotating scan line */}
+        
         <span
           className="absolute inset-0 rounded-full"
           style={{
@@ -159,27 +157,27 @@ function ScanningLoader({ query }) {
             animation: 'spin 1.4s linear infinite',
           }}
         />
-        {/* Center dot */}
+        
         <span className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-lg"
           style={{ background: 'linear-gradient(135deg,#e8517a,#f4874b)' }}>
           📡
         </span>
       </div>
 
-      {/* Tracking number */}
+      
       <div className="text-center">
         <p className="text-xs text-gray-400 mb-1 font-mono uppercase tracking-widest">Tracking</p>
         <p className="font-mono font-bold text-dark-800 text-lg">{query}</p>
       </div>
 
-      {/* Phase text */}
+      
       <div className="text-center">
         <p className="text-sm text-gray-500 font-medium min-h-[20px]">
           {phases[phase]}{dots}
         </p>
       </div>
 
-      {/* Progress bar */}
+      
       <div className="w-64 h-1.5 bg-gray-100 rounded-full overflow-hidden">
         <div
           className="h-full rounded-full"
@@ -204,7 +202,6 @@ function ScanningLoader({ query }) {
   );
 }
 
-// ─── Result card ─────────────────────────────────────────────────────────────
 function TrackingResult({ data, trackingNo }) {
   const cfg = STATUS_CONFIG[data.status];
   const doneSteps = data.steps.filter((s) => s.done).length;
@@ -213,11 +210,11 @@ function TrackingResult({ data, trackingNo }) {
   return (
     <div className="animate-slide-in-up space-y-6">
 
-      {/* Header card */}
+      
       <div className="bg-white rounded-3xl shadow-card border border-gray-100 overflow-hidden">
         <div className="p-5 sm:p-8">
           <div className="flex flex-col sm:flex-row sm:items-start gap-5">
-            {/* Product image */}
+            
             <img
               src={data.image}
               alt={data.product}
@@ -239,7 +236,7 @@ function TrackingResult({ data, trackingNo }) {
             </div>
           </div>
 
-          {/* Progress bar */}
+          
           <div className="mt-6">
             <div className="flex justify-between text-xs text-gray-400 mb-2">
               <span>Order Placed</span>
@@ -255,7 +252,7 @@ function TrackingResult({ data, trackingNo }) {
           </div>
         </div>
 
-        {/* Meta row */}
+        
         <div className="border-t border-gray-50 bg-gray-50/50 px-5 sm:px-8 py-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
           {[
             { label: 'Origin',      value: data.origin },
@@ -271,11 +268,11 @@ function TrackingResult({ data, trackingNo }) {
         </div>
       </div>
 
-      {/* Timeline */}
+      
       <div className="bg-white rounded-3xl shadow-card border border-gray-100 p-5 sm:p-8">
         <h3 className="font-bold text-dark-800 text-lg mb-6">Shipment Timeline</h3>
         <div className="relative">
-          {/* Vertical line */}
+          
           <div className="absolute left-5 top-6 bottom-6 w-0.5 bg-gray-100" />
 
           <div className="space-y-1">
@@ -284,7 +281,7 @@ function TrackingResult({ data, trackingNo }) {
                 key={i}
                 className={`relative flex gap-4 py-3 px-2 rounded-2xl transition-all ${step.current ? 'bg-orange-50' : ''}`}
               >
-                {/* Icon bubble */}
+                
                 <div className={`relative z-10 w-10 h-10 rounded-full flex items-center justify-center text-base flex-shrink-0 border-2 transition-all ${
                   step.done
                     ? step.current
@@ -319,7 +316,7 @@ function TrackingResult({ data, trackingNo }) {
         </div>
       </div>
 
-      {/* Package details */}
+      
       <div className="bg-white rounded-3xl shadow-card border border-gray-100 p-5 sm:p-8">
         <h3 className="font-bold text-dark-800 text-lg mb-5">Package Details</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
@@ -343,7 +340,6 @@ function TrackingResult({ data, trackingNo }) {
   );
 }
 
-// ─── Not found state ──────────────────────────────────────────────────────────
 function NotFound({ query }) {
   return (
     <div className="bg-white rounded-3xl shadow-card border border-gray-100 p-10 text-center animate-fade-in">
@@ -355,10 +351,9 @@ function NotFound({ query }) {
   );
 }
 
-// ─── Main page ────────────────────────────────────────────────────────────────
 export default function TrackPage() {
   const [query,   setQuery]   = useState('');
-  const [phase,   setPhase]   = useState('idle'); // idle | scanning | result | notfound
+  const [phase,   setPhase]   = useState('idle');
   const [result,  setResult]  = useState(null);
   const [tracked, setTracked] = useState('');
   const inputRef = useRef(null);
@@ -370,7 +365,6 @@ export default function TrackPage() {
     setPhase('scanning');
     setResult(null);
 
-    // Simulate network delay
     setTimeout(() => {
       const data = FAKE_ORDERS[q];
       if (data) { setResult(data); setPhase('result'); }
@@ -388,14 +382,14 @@ export default function TrackPage() {
   return (
     <div className="container-custom py-10 sm:py-16 max-w-3xl">
 
-      {/* Breadcrumb */}
+      
       <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8">
         <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>
         <span>/</span>
         <span className="text-dark-800 font-medium">Track Order</span>
       </nav>
 
-      {/* Hero section */}
+      
       <div className="text-center mb-10">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 text-3xl shadow-brand"
           style={{ background: 'linear-gradient(135deg,#e8517a,#f4874b)' }}>
@@ -407,7 +401,7 @@ export default function TrackPage() {
         </p>
       </div>
 
-      {/* Search box */}
+      
       <div className="bg-white rounded-3xl shadow-card border border-gray-100 p-5 sm:p-8 mb-8">
         <label className="block text-sm font-semibold text-dark-800 mb-3">Tracking Number</label>
         <div className="flex gap-3">
@@ -440,7 +434,7 @@ export default function TrackPage() {
           )}
         </div>
 
-        {/* Sample numbers */}
+        
         {phase === 'idle' && (
           <div className="mt-4">
             <p className="text-xs text-gray-400 mb-2">Try a sample tracking number:</p>
@@ -459,12 +453,12 @@ export default function TrackPage() {
         )}
       </div>
 
-      {/* States */}
+      
       {phase === 'scanning'  && <ScanningLoader query={tracked} />}
       {phase === 'result'    && result && <TrackingResult data={result} trackingNo={tracked} />}
       {phase === 'notfound'  && <NotFound query={tracked} />}
 
-      {/* Info footer */}
+      
       {phase === 'idle' && (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
           {[

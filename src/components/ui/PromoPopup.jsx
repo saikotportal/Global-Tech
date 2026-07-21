@@ -9,10 +9,8 @@ export default function PromoPopup() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    // Only show if never seen before
     const seen = localStorage.getItem('promo_popup_seen');
     if (!seen) {
-      // Small delay so page loads first
       const t = setTimeout(() => setVisible(true), 1200);
       return () => clearTimeout(t);
     }
@@ -34,14 +32,14 @@ export default function PromoPopup() {
 
   return (
     <>
-      {/* Backdrop */}
+      
       <div
         className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm"
         style={{ animation: 'fadeIn 0.3s ease' }}
         onClick={close}
       />
 
-      {/* Popup */}
+      
       <div
         className="fixed z-[201] inset-0 flex items-center justify-center p-4 pointer-events-none"
       >
@@ -55,7 +53,7 @@ export default function PromoPopup() {
             @keyframes popIn  { from { opacity:0; transform:scale(0.85) translateY(20px) } to { opacity:1; transform:scale(1) translateY(0) } }
           `}</style>
 
-          {/* Close button */}
+          
           <button onClick={close}
             className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/80 backdrop-blur flex items-center justify-center text-gray-500 hover:text-gray-900 hover:bg-white transition-all shadow-sm">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,10 +61,10 @@ export default function PromoPopup() {
             </svg>
           </button>
 
-          {/* Top banner */}
+          
           <div className="relative h-36 flex items-center justify-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 60%, #1a1a2e 100%)' }}>
-            {/* Decorative blobs */}
+            
             <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-30"
               style={{ background: 'radial-gradient(circle, #e8517a, transparent)' }} />
             <div className="absolute -bottom-10 -right-10 w-48 h-48 rounded-full opacity-20"
@@ -83,7 +81,7 @@ export default function PromoPopup() {
             </div>
           </div>
 
-          {/* Body */}
+          
           <div className="px-8 py-6">
             {done ? (
               <div className="text-center py-4">
@@ -119,7 +117,7 @@ export default function PromoPopup() {
                   </button>
                 </form>
 
-                {/* Perks */}
+                
                 <div className="grid grid-cols-3 gap-2 mb-5">
                   {[
                     { icon: '🚚', text: 'Free Shipping over $99' },

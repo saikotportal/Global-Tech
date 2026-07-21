@@ -50,7 +50,7 @@ export default function ProductCard({ product }) {
               <span className="font-bold text-gray-500 text-sm tracking-wide">Out of Stock</span>
             </div>
           )}
-          {/* Quick view overlay */}
+          
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-end justify-center pb-3 opacity-0 group-hover:opacity-100">
             <span className="bg-white text-gray-800 text-xs font-semibold px-4 py-1.5 rounded-full shadow-lg">
               Quick View

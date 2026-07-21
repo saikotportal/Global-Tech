@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { PRODUCTS, CATEGORIES } from '@/lib/products';
 import ProductCard from '@/components/products/ProductCard';
 
-// ── Per-brand config ──────────────────────────────────────────────────────────
 const BRAND_META = {
   Apple: {
     tagline: 'Think Different.',
@@ -295,7 +294,6 @@ export default function BrandPage() {
   const params = useParams();
   const slug = decodeURIComponent(params?.slug || '');
 
-  // Match brand name case-insensitively
   const allBrands = [...new Set(PRODUCTS.map(p => p.brand))];
   const brandName = allBrands.find(b => b.toLowerCase() === slug.toLowerCase()) || slug;
   const meta = BRAND_META[brandName] || {
@@ -316,7 +314,6 @@ export default function BrandPage() {
     [slug]
   );
 
-  // Categories this brand appears in
   const brandCategories = useMemo(() => {
     const catIds = [...new Set(brandProducts.map(p => p.category))];
     return CATEGORIES.filter(c => catIds.includes(c.id));
@@ -339,7 +336,6 @@ export default function BrandPage() {
     return list;
   }, [brandProducts, activeCategory, sort]);
 
-  // Stats
   const avgRating = brandProducts.length
     ? (brandProducts.reduce((s, p) => s + p.rating, 0) / brandProducts.length).toFixed(1)
     : '—';
@@ -347,7 +343,6 @@ export default function BrandPage() {
   const lowestPrice = Math.min(...brandProducts.map(p => p.price));
   const inStockCount = brandProducts.filter(p => p.inStock).length;
 
-  // Other brands to browse
   const otherBrands = allBrands.filter(b => b.toLowerCase() !== slug.toLowerCase()).slice(0, 12);
 
   if (!brandProducts.length) {
@@ -363,19 +358,19 @@ export default function BrandPage() {
   return (
     <div className="min-h-screen bg-gray-50">
 
-      {/* ── HERO ─────────────────────────────────────────────────────── */}
+      
       <section className={`relative bg-gradient-to-br ${meta.heroGradient} overflow-hidden`}>
-        {/* Glow blobs */}
+        
         <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-10 pointer-events-none"
           style={{ background: meta.accentHex, filter: 'blur(100px)' }} />
         <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full opacity-10 pointer-events-none"
           style={{ background: meta.accentHex, filter: 'blur(60px)' }} />
-        {/* Subtle grid */}
+        
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
         <div className="relative container-custom py-16 md:py-20">
-          {/* Breadcrumb */}
+          
           <nav className="flex items-center gap-2 text-xs mb-10 opacity-50">
             <Link href="/" className="text-white hover:opacity-100 transition-opacity">Home</Link>
             <span className="text-white/40">›</span>
@@ -388,7 +383,7 @@ export default function BrandPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
             <div className="max-w-2xl">
-              {/* Brand logo + name */}
+              
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-16 h-16 rounded-2xl flex items-center justify-center border overflow-hidden"
                   style={{ background: 'rgba(255,255,255,0.95)', borderColor: `${meta.accentHex}33` }}>
@@ -423,7 +418,7 @@ export default function BrandPage() {
                 {meta.description}
               </p>
 
-              {/* Brand info pills */}
+              
               <div className="flex flex-wrap gap-2 mt-5">
                 {[
                   { label: 'Founded', value: meta.founded },
@@ -439,7 +434,7 @@ export default function BrandPage() {
               </div>
             </div>
 
-            {/* Stats card */}
+            
             <div className="grid grid-cols-2 gap-3 md:min-w-[240px]">
               {[
                 { value: brandProducts.length, label: 'Products' },
@@ -459,7 +454,7 @@ export default function BrandPage() {
         </div>
       </section>
 
-      {/* ── CATEGORY TABS ─────────────────────────────────────────────── */}
+      
       <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm">
         <div className="container-custom">
           <div className="flex items-center gap-1 overflow-x-auto py-1 scrollbar-hide">
@@ -497,9 +492,9 @@ export default function BrandPage() {
         </div>
       </div>
 
-      {/* ── PRODUCTS ──────────────────────────────────────────────────── */}
+      
       <div className="container-custom py-10">
-        {/* Sort + count bar */}
+        
         <div className="flex items-center justify-between mb-6 gap-4 flex-wrap">
           <p className="text-sm text-gray-500">
             Showing <span className="font-semibold text-gray-900">{filteredProducts.length}</span> {brandName} products
@@ -520,7 +515,7 @@ export default function BrandPage() {
           </select>
         </div>
 
-        {/* In-stock notice */}
+        
         {inStockCount < brandProducts.length && (
           <div className="mb-5 flex items-center gap-2 text-sm text-amber-700 bg-amber-50 border border-amber-200 px-4 py-3 rounded-xl">
             <span>⚠️</span>
@@ -528,7 +523,7 @@ export default function BrandPage() {
           </div>
         )}
 
-        {/* Grid */}
+        
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {filteredProducts.map(product => (
@@ -546,7 +541,7 @@ export default function BrandPage() {
         )}
       </div>
 
-      {/* ── OTHER BRANDS ──────────────────────────────────────────────── */}
+      
       <section className="bg-white border-t border-gray-100 py-12">
         <div className="container-custom">
           <h2 className="font-bold text-lg text-gray-900 mb-6">Browse Other Brands</h2>

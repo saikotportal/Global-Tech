@@ -8,21 +8,19 @@ import { useCurrency } from '@/context/CurrencyContext';
 import { useCart } from '@/hooks/useCart';
 import { useToast } from '@/hooks/useToast';
 
-// ─── Flash deal config (products with extra-steep discounts) ─────────────────
 const FLASH_DEAL_IDS = [5, 15, 4, 10, 31, 25, 2, 8, 17, 20];
 
-// Additional deal-specific overrides (bigger discounts for flash sale)
 const PRICE_OVERRIDES = {
-  5:  { price: 1299, originalPrice: 2499 },  // LG OLED TV
-  15: { price: 2799, originalPrice: 5499 },  // Samsung 8K
-  4:  { price: 1499, originalPrice: 2199 },  // Dell XPS 15
-  10: { price: 449,  originalPrice: 699  },  // Xbox
-  31: { price: 199,  originalPrice: 399  },  // Meta Quest
-  25: { price: 549,  originalPrice: 959  },  // DJI Mini
-  2:  { price: 899,  originalPrice: 1199 },  // Samsung S25
-  8:  { price: 199,  originalPrice: 379  },  // Bose QC
-  17: { price: 599,  originalPrice: 899  },  // OnePlus 13
-  20: { price: 899,  originalPrice: 1599 },  // TCL TV
+  5:  { price: 1299, originalPrice: 2499 },
+  15: { price: 2799, originalPrice: 5499 },
+  4:  { price: 1499, originalPrice: 2199 },
+  10: { price: 449,  originalPrice: 699  },
+  31: { price: 199,  originalPrice: 399  },
+  25: { price: 549,  originalPrice: 959  },
+  2:  { price: 899,  originalPrice: 1199 },
+  8:  { price: 199,  originalPrice: 379  },
+  17: { price: 599,  originalPrice: 899  },
+  20: { price: 899,  originalPrice: 1599 },
 };
 
 const FLASH_DEALS = PRODUCTS
@@ -34,7 +32,6 @@ const FLASH_DEALS = PRODUCTS
     return db - da;
   });
 
-// ─── Countdown hook ───────────────────────────────────────────────────────────
 function useCountdown(targetMs) {
   const [remaining, setRemaining] = useState(targetMs - Date.now());
   useEffect(() => {
@@ -61,7 +58,6 @@ function CountdownUnit({ value, label }) {
   );
 }
 
-// ─── Hero deal card (top deal, large) ────────────────────────────────────────
 function HeroDeal({ product, endTime }) {
   const { format } = useCurrency();
   const { addItem } = useCart();
@@ -75,14 +71,14 @@ function HeroDeal({ product, endTime }) {
       className="rounded-3xl overflow-hidden shadow-card-lg mb-12 relative"
       style={{ background: 'linear-gradient(135deg,#1a1a2e 0%,#252540 60%,#2a1a2e 100%)' }}
     >
-      {/* Glow blobs */}
+      
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 blur-3xl"
         style={{ background: 'radial-gradient(#e8517a,transparent)' }} />
       <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-15 blur-3xl"
         style={{ background: 'radial-gradient(#f4874b,transparent)' }} />
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-0">
-        {/* Left: info */}
+        
         <div className="p-8 sm:p-12 flex flex-col justify-center">
           <span className="inline-flex items-center gap-2 text-xs font-bold text-orange-400 bg-orange-400/10 border border-orange-400/30 px-3 py-1.5 rounded-full w-fit mb-5">
             ⚡ FLASH DEAL OF THE DAY
@@ -91,7 +87,7 @@ function HeroDeal({ product, endTime }) {
           <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">{product.name}</h2>
           <p className="text-gray-400 text-sm mb-6 leading-relaxed">{product.description}</p>
 
-          {/* Pricing */}
+          
           <div className="flex items-baseline gap-3 mb-2">
             <span className="text-4xl font-bold text-white">{format(product.price)}</span>
             <span className="text-xl text-gray-500 line-through">{format(product.originalPrice)}</span>
@@ -99,7 +95,7 @@ function HeroDeal({ product, endTime }) {
           </div>
           <p className="text-green-400 text-sm font-semibold mb-8">You save {format(saved)}!</p>
 
-          {/* Countdown */}
+          
           <div className="mb-8">
             <p className="text-gray-400 text-xs font-semibold uppercase tracking-widest mb-3">Deal ends in</p>
             <div className="flex items-center gap-3">
@@ -129,7 +125,7 @@ function HeroDeal({ product, endTime }) {
           </div>
         </div>
 
-        {/* Right: image */}
+        
         <div className="relative h-64 lg:h-auto overflow-hidden">
           <img
             src={product.image}
@@ -144,13 +140,11 @@ function HeroDeal({ product, endTime }) {
   );
 }
 
-// ─── Deal progress bar card ───────────────────────────────────────────────────
 function DealCard({ product }) {
   const { format } = useCurrency();
   const { addItem } = useCart();
   const { toast }   = useToast();
   const disc  = calcDiscount(product.originalPrice, product.price);
-  // Fake stock level for urgency (seeded from id)
   const stockPct = 20 + ((product.id * 17) % 60);
 
   return (
@@ -184,7 +178,7 @@ function DealCard({ product }) {
           <span className="text-xs text-gray-400 line-through">{format(product.originalPrice)}</span>
         </div>
 
-        {/* Stock progress */}
+        
         <div className="mb-3">
           <div className="flex justify-between text-xs mb-1">
             <span className="text-gray-500">Stock remaining</span>
@@ -219,9 +213,7 @@ function DealCard({ product }) {
   );
 }
 
-// ─── Main page ────────────────────────────────────────────────────────────────
 export default function DealsPage() {
-  // End-of-day countdown
   const endOfDay = useMemo(() => {
     const d = new Date();
     d.setHours(23, 59, 59, 0);
@@ -245,17 +237,17 @@ export default function DealsPage() {
   return (
     <div className="container-custom py-10 sm:py-14">
 
-      {/* Breadcrumb */}
+      
       <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8">
         <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>
         <span>/</span>
         <span className="text-dark-800 font-medium">Flash Deals</span>
       </nav>
 
-      {/* Hero deal */}
+      
       <HeroDeal product={heroDeal} endTime={endOfDay} />
 
-      {/* Section header */}
+      
       <div className="flex items-center justify-between gap-4 flex-wrap mb-6">
         <div>
           <h2 className="font-display text-2xl font-bold text-dark-800 flex items-center gap-2">
@@ -278,12 +270,12 @@ export default function DealsPage() {
         </select>
       </div>
 
-      {/* Deals grid */}
+      
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 mb-16">
         {otherDeals.map((p) => <DealCard key={p.id} product={p} />)}
       </div>
 
-      {/* Banner */}
+      
       <div
         className="rounded-3xl p-8 sm:p-12 text-center text-white"
         style={{ background: 'linear-gradient(135deg,#e8517a 0%,#f4874b 50%,#f5c518 100%)' }}

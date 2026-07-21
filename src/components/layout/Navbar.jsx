@@ -77,13 +77,11 @@ export default function Navbar() {
   const { format } = useCurrency();
   const { count: wishlistCount } = useWishlist();
 
-  // Cart icon pop on item add
   useEffect(() => {
     if (totalItems > prevCartItems.current) setCartPopKey(k => k + 1);
     prevCartItems.current = totalItems;
   }, [totalItems]);
 
-  // Wishlist icon pop on item add
   useEffect(() => {
     if (wishlistCount > prevWishlistCount.current) setWishlistPopKey(k => k + 1);
     prevWishlistCount.current = wishlistCount;
@@ -127,7 +125,6 @@ export default function Navbar() {
   return (
     <>
       <style>{`
-        /* Navbar-specific animations */
         .pc-builder-btn { transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .pc-builder-btn:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 8px 28px rgba(232,81,122,0.6) !important; }
         .pc-builder-btn:active { transform: translateY(0) scale(0.98); }
@@ -139,7 +136,7 @@ export default function Navbar() {
 
       <div className="fixed top-0 left-0 right-0 z-50">
 
-        {/* ── 1. DARK TOP BAR ── */}
+        
         <div className="bg-gray-900 text-white text-xs overflow-hidden transition-all duration-150 ease-in-out"
           style={{ maxHeight: topBarVisible ? '36px' : '0px', opacity: topBarVisible ? 1 : 0, pointerEvents: topBarVisible ? 'auto' : 'none' }}>
           <div className="relative overflow-hidden h-9 flex items-center justify-center">
@@ -152,10 +149,10 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* ── 2. WHITE MAIN HEADER ── */}
+        
         <header className={`bg-white transition-all duration-150 ${scrolled ? 'shadow-lg' : 'shadow-sm'}`}>
 
-          {/* ── 2a. INFO ROW ── */}
+          
           <div className="border-b border-gray-100 transition-all duration-150 ease-in-out relative z-50"
             style={{ maxHeight: scrolled ? '0px' : '36px', opacity: scrolled ? 0 : 1, pointerEvents: scrolled ? 'none' : 'auto' }}>
             <div className="container-custom flex items-center h-9 gap-4 text-sm text-gray-500">
@@ -216,16 +213,16 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* ── 2b. LOGO + SEARCH + ACTIONS ROW ── */}
+          
           <div className={`container-custom transition-all duration-150 ${scrolled ? 'overflow-hidden' : ''}`}
             style={{ maxHeight: scrolled ? '0px' : '200px', opacity: scrolled ? 0 : 1, pointerEvents: scrolled ? 'none' : 'auto' }}>
             <div className="flex items-center h-16 gap-4">
-              {/* Logo with pulse on hover */}
+              
               <Link href="/" className="flex-shrink-0 logo-pulse">
                 <img src="/logo.png" alt="GlobalTech" className="h-12 w-auto transition-transform duration-200 hover:scale-105" />
               </Link>
 
-              {/* Search bar */}
+              
               <div className="hidden md:flex flex-1" style={{ marginLeft: '22px', marginRight: '360px' }}>
                 <form className="flex w-full border-2 border-gray-200 rounded-xl overflow-hidden focus-within:border-orange-400 transition-all duration-200 focus-within:shadow-brand"
                   onSubmit={(e) => { e.preventDefault(); window.location.href = `/search?q=${searchQuery}`; }}>
@@ -241,7 +238,7 @@ export default function Navbar() {
               </div>
 
               <div className="flex items-center gap-3 ml-auto">
-                {/* PC Builder */}
+                
                 <Link href="/pc-builder"
                   className="hidden md:flex items-center gap-2 flex-shrink-0 pc-builder-btn shimmer-btn"
                   style={{ position:'relative', padding:'9px 18px', borderRadius:'14px', color:'#fff', fontWeight:800, fontSize:'13px', letterSpacing:'0.02em', background:'linear-gradient(135deg,#e8517a,#f4874b)', boxShadow:'0 4px 18px rgba(232,81,122,0.45)', overflow:'hidden', textDecoration:'none' }}>
@@ -255,7 +252,7 @@ export default function Navbar() {
                   <span style={{ position:'relative', zIndex:1, fontSize:'11px', opacity:0.85 }}>⚡</span>
                 </Link>
 
-                {/* Wishlist — pop on add */}
+                
                 <Link href="/wishlist" className="hidden md:flex flex-col items-center text-gray-600 hover:text-orange-500 transition-colors relative">
                   <div key={wishlistPopKey} className={wishlistPopKey > 0 ? 'icon-pop' : ''} style={{ position:'relative' }}>
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -271,7 +268,7 @@ export default function Navbar() {
                   <span className="text-xs mt-0.5">Wishlist</span>
                 </Link>
 
-                {/* Account */}
+                
                 {user ? (
                   <div className="hidden md:block relative" ref={accountRef}>
                     <button onClick={() => setAccountOpen(!accountOpen)}
@@ -318,11 +315,11 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* ── 2c. NAV ROW ── */}
+          
           <div className="container-custom">
             <nav className="hidden md:flex items-center border-t border-gray-100">
 
-              {/* Featured Category */}
+              
               <div className="relative flex-shrink-0" ref={categoryRef}>
                 <button onClick={() => { setCategoryOpen(!categoryOpen); setHoveredCat(null); }}
                   className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-white flex-shrink-0 select-none rounded-tl-xl rounded-tr-xl transition-opacity hover:opacity-90"
@@ -373,7 +370,7 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* Nav links with animated underline */}
+              
               <div className="flex items-center ml-4" ref={navDropRef}>
                 {NAV_LINKS.map((link) => (
                   <div key={link.label} className="relative"
@@ -398,7 +395,7 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* Cart box — icon pop on add */}
+              
               <div className="ml-auto flex items-center rounded-lg overflow-hidden border-2 border-gray-200 hover:border-orange-400 transition-all duration-200 flex-shrink-0 hover:shadow-brand">
                 <button onClick={openCart}
                   className="flex items-center gap-2 px-3 py-2 bg-white text-gray-700 hover:bg-orange-50 transition-colors text-sm">
@@ -422,10 +419,10 @@ export default function Navbar() {
         </header>
       </div>
 
-      {/* Spacer */}
+      
       <div className={`transition-all duration-150 ${scrolled ? 'h-[52px]' : 'h-[148px]'}`} />
 
-      {/* Mobile menu */}
+      
       {mobileOpen && (
         <div className="fixed inset-0 z-40 bg-white pt-16 overflow-y-auto md:hidden animate-fade-in">
           <div className="p-4">

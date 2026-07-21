@@ -37,7 +37,6 @@ a {
   text-decoration: none;
 }
 
-/* Gradient text utility */
 .gradient-text {
   background: var(--gradient);
   -webkit-background-clip: text;
@@ -45,7 +44,6 @@ a {
   background-clip: text;
 }
 
-/* Gradient border utility */
 .gradient-border {
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -60,7 +58,6 @@ a {
   z-index: -1;
 }
 
-/* Shimmer loading animation */
 .shimmer {
   background: linear-gradient(
     90deg,
@@ -72,13 +69,11 @@ a {
   animation: shimmer 1.5s infinite;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar        { width: 6px; }
 ::-webkit-scrollbar-track  { background: #f1f1f1; }
 ::-webkit-scrollbar-thumb  { background: var(--brand-orange); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--brand-pink); }
 
-/* Smooth scroll */
 html { scroll-behavior: smooth; }
 
 @layer components {
@@ -106,13 +101,7 @@ html { scroll-behavior: smooth; }
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   GLOBAL ANIMATION SYSTEM — GlobalTech v8
-   Pure CSS keyframes + Tailwind transition classes
-   No new libraries. IntersectionObserver via useScrollAnimation.
-   ═══════════════════════════════════════════════════════════════ */
 
-/* ── Page entrance ── */
 @keyframes pageEnter {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -121,7 +110,6 @@ main {
   animation: pageEnter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* ── Page exit (route change) ── */
 @keyframes pageExit {
   from { opacity: 1; transform: translateY(0); }
   to   { opacity: 0; transform: translateY(-10px); }
@@ -130,7 +118,6 @@ main.page-exiting {
   animation: pageExit 0.15s ease-in both;
 }
 
-/* ── Scroll-reveal base ── */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -150,10 +137,8 @@ main.page-exiting {
   transform: scale(1);
 }
 
-/* ── Staggered children (add delay via CSS vars) ── */
 .stagger-child { transition-delay: var(--delay, 0ms); }
 
-/* ── Ken Burns hero background ── */
 @keyframes kenBurns {
   0%   { transform: scale(1)    translateX(0)    translateY(0); }
   33%  { transform: scale(1.06) translateX(-1%)  translateY(-1%); }
@@ -165,7 +150,6 @@ main.page-exiting {
   transform-origin: center center;
 }
 
-/* ── Hero headline fade-up ── */
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -183,7 +167,6 @@ main.page-exiting {
   animation: heroFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.55s both;
 }
 
-/* ── Shimmer sweep on buttons ── */
 @keyframes shimmerSweep {
   0%   { left: -80%; }
   50%  { left: 130%; }
@@ -205,7 +188,6 @@ main.page-exiting {
   pointer-events: none;
 }
 
-/* ── Navbar logo pulse ── */
 @keyframes logoPulse {
   0%, 100% { filter: brightness(1); }
   50%       { filter: brightness(1.15) drop-shadow(0 0 6px rgba(244,135,75,0.4)); }
@@ -214,7 +196,6 @@ main.page-exiting {
   animation: logoPulse 1.2s ease-in-out infinite;
 }
 
-/* ── Nav link underline slide-in ── */
 .nav-link-animated {
   position: relative;
 }
@@ -231,7 +212,6 @@ main.page-exiting {
   width: 100%; left: 0;
 }
 
-/* ── Cart/wishlist icon bounce on add ── */
 @keyframes iconPop {
   0%   { transform: scale(1); }
   40%  { transform: scale(1.35); }
@@ -242,7 +222,6 @@ main.page-exiting {
   animation: iconPop 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
-/* ── Product card bounce-in on mount ── */
 @keyframes cardBounceIn {
   0%   { opacity: 0; transform: translateY(20px) scale(0.95); }
   70%  { opacity: 1; transform: translateY(-4px) scale(1.01); }
@@ -252,7 +231,6 @@ main.page-exiting {
   animation: cardBounceIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
-/* ── Add-to-cart button slide up ── */
 @keyframes slideUpIn {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -261,7 +239,6 @@ main.page-exiting {
   animation: slideUpIn 0.25s ease-out both;
 }
 
-/* ── Flash deals countdown digit tick ── */
 @keyframes digitTick {
   0%   { transform: translateY(-100%); opacity: 0; }
   30%  { transform: translateY(8%);   opacity: 1; }
@@ -271,13 +248,11 @@ main.page-exiting {
   animation: digitTick 0.18s cubic-bezier(0.22,1,0.36,1) both;
 }
 
-/* ── Brand logo reveal ── */
 @keyframes brandFadeIn {
   from { opacity: 0; transform: scale(0.85); }
   to   { opacity: 1; transform: scale(1); }
 }
 
-/* ── Section heading underline draw ── */
 @keyframes underlineDraw {
   from { width: 0; }
   to   { width: 100%; }
@@ -300,7 +275,6 @@ main.page-exiting {
   width: 100%;
 }
 
-/* ── Footer link nudge ── */
 .footer-link {
   display: inline-flex;
   align-items: center;
@@ -319,7 +293,6 @@ main.page-exiting {
   width: 14px;
 }
 
-/* ── Social icon hover ── */
 .social-icon {
   transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), color 0.2s;
 }
@@ -327,7 +300,6 @@ main.page-exiting {
   transform: scale(1.25);
 }
 
-/* ── Newsletter input focus glow ── */
 @keyframes inputGlow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(244,135,75,0); }
   50%       { box-shadow: 0 0 0 4px rgba(244,135,75,0.25); }
@@ -338,7 +310,6 @@ main.page-exiting {
   animation: inputGlow 1.8s ease-in-out infinite;
 }
 
-/* ── Admin sidebar slide-in ── */
 @keyframes sidebarSlideIn {
   from { opacity: 0; transform: translateX(-20px); }
   to   { opacity: 1; transform: translateX(0); }
@@ -347,7 +318,6 @@ main.page-exiting {
   animation: sidebarSlideIn 0.4s cubic-bezier(0.22,1,0.36,1) both;
 }
 
-/* ── Admin stat card fade-up ── */
 @keyframes statFadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -356,7 +326,6 @@ main.page-exiting {
   animation: statFadeUp 0.5s cubic-bezier(0.22,1,0.36,1) both;
 }
 
-/* ── Admin bar grow from bottom ── */
 @keyframes barGrow {
   from { transform: scaleY(0); transform-origin: bottom; }
   to   { transform: scaleY(1); transform-origin: bottom; }
@@ -366,7 +335,6 @@ main.page-exiting {
   transform-origin: bottom;
 }
 
-/* ── Admin table row fade ── */
 @keyframes rowFade {
   from { opacity: 0; transform: translateX(-8px); }
   to   { opacity: 1; transform: translateX(0); }
@@ -375,7 +343,6 @@ main.page-exiting {
   animation: rowFade 0.35s ease-out both;
 }
 
-/* ── Developer card shimmer border ── */
 @keyframes borderGlow {
   0%, 100% { box-shadow: 0 0 0 2px rgba(232,81,122,0.3), 0 0 20px rgba(244,135,75,0.1); }
   50%       { box-shadow: 0 0 0 2px rgba(244,135,75,0.6), 0 0 28px rgba(232,81,122,0.25); }
@@ -384,13 +351,11 @@ main.page-exiting {
   animation: borderGlow 2.5s ease-in-out infinite;
 }
 
-/* ── Micro: button active scale ── */
 button:active:not(:disabled), a:active {
   transform: scale(0.97);
   transition: transform 0.08s ease;
 }
 
-/* ── Skeleton shimmer wave ── */
 @keyframes skeletonWave {
   0%   { background-position: -400px 0; }
   100% { background-position: 400px 0; }
@@ -401,7 +366,6 @@ button:active:not(:disabled), a:active {
   animation: skeletonWave 1.4s ease-in-out infinite;
 }
 
-/* ── Modal scale+fade ── */
 @keyframes modalIn {
   from { opacity: 0; transform: scale(0.92) translateY(10px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
@@ -410,7 +374,6 @@ button:active:not(:disabled), a:active {
   animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
-/* ── Toast slide from right ── */
 @keyframes toastSlideIn {
   from { opacity: 0; transform: translateX(110%); }
   to   { opacity: 1; transform: translateX(0); }
@@ -422,7 +385,6 @@ button:active:not(:disabled), a:active {
 .toast-enter { animation: toastSlideIn 0.35s cubic-bezier(0.22,1,0.36,1) both; }
 .toast-exit  { animation: toastSlideOut 0.25s ease-in both; }
 
-/* ── Admin particle burst (secret gate) ── */
 @keyframes particleBurst {
   0%   { transform: translate(0,0) scale(1); opacity: 1; }
   100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
