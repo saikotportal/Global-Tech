@@ -11,7 +11,7 @@
 Live - [Globaltech.com](https://globaaltech.netlify.app)
 (Backup) - [Globaltech.com](https://globaaltech2.netlify.app)
  
-## ✨ Features 
+## ✨ Features
  
 ### 🛍️ Storefront 
 - **Hero Banner** — auto-rotating slider with Ken Burns background effect, animated headlines, shimmer CTA buttons
